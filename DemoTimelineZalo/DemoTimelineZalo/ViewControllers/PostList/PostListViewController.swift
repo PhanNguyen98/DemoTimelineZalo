@@ -13,6 +13,7 @@ class PostListViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
     
     
