@@ -4,6 +4,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,8 +18,51 @@
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JQE-cv-QlF">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="110"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NCv-5B-R1B">
+                                        <rect key="frame" x="16" y="68" width="26" height="26"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="26" id="Mi0-Mk-H9w"/>
+                                            <constraint firstAttribute="width" secondItem="NCv-5B-R1B" secondAttribute="height" id="iAH-GE-QSu"/>
+                                        </constraints>
+                                        <color key="tintColor" name="color_ACAFB2"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal">
+                                            <imageReference key="image" image="xmark" catalog="system" symbolScale="large"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8C7-YF-Yyf">
+                                        <rect key="frame" x="347" y="68" width="30" height="26"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="JtS-fn-xvF"/>
+                                            <constraint firstAttribute="width" secondItem="8C7-YF-Yyf" secondAttribute="height" multiplier="30:26" id="pzR-ZX-lcC"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal">
+                                            <imageReference key="image" image="paperplane.fill" catalog="system" symbolScale="large"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" name="color_F3F5F6"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="NCv-5B-R1B" secondAttribute="bottom" constant="16" id="4Ib-69-yMT"/>
+                                    <constraint firstAttribute="trailing" secondItem="8C7-YF-Yyf" secondAttribute="trailing" constant="16" id="GTT-RV-hHn"/>
+                                    <constraint firstAttribute="bottom" secondItem="8C7-YF-Yyf" secondAttribute="bottom" constant="16" id="SDl-55-FCL"/>
+                                    <constraint firstItem="NCv-5B-R1B" firstAttribute="leading" secondItem="JQE-cv-QlF" secondAttribute="leading" constant="16" id="eIM-Mr-Cag"/>
+                                    <constraint firstAttribute="height" constant="110" id="zLn-cO-Qw5"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="JQE-cv-QlF" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="BUG-kP-ao7"/>
+                            <constraint firstItem="JQE-cv-QlF" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="YRF-cx-GNg"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="JQE-cv-QlF" secondAttribute="trailing" id="ipR-9k-Vbp"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -26,6 +71,14 @@
         </scene>
     </scenes>
     <resources>
+        <image name="paperplane.fill" catalog="system" width="128" height="119"/>
+        <image name="xmark" catalog="system" width="128" height="113"/>
+        <namedColor name="color_ACAFB2">
+            <color red="0.67450980392156867" green="0.68627450980392157" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="color_F3F5F6">
+            <color red="0.95294117647058818" green="0.96078431372549022" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

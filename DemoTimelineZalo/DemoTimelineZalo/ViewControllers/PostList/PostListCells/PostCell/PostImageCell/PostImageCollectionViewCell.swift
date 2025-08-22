@@ -15,6 +15,8 @@ class PostImageCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        overlayView.isHidden = true
+        backgroundColor = .black.withAlphaComponent(0.2)
     }
 
     func configure(urlString: String, numberImage: Int, index: Int) {

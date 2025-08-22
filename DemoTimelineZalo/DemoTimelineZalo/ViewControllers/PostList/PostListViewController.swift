@@ -21,7 +21,7 @@ class PostListViewController: BaseViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(CreatePostTableViewCell.self, bundle: .main)
-        tableView.register(PostTableViewCell.self)
+        tableView.register(UserPostTableViewCell.self)
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 300
     }
@@ -60,7 +60,7 @@ extension PostListViewController: UITableViewDataSource {
             let cell: CreatePostTableViewCell = tableView.dequeueReusableCell(for: indexPath)
             return cell
         case .postList:
-            let cell: PostTableViewCell = tableView.dequeueReusableCell(for: indexPath)
+            let cell: UserPostTableViewCell = tableView.dequeueReusableCell(for: indexPath)
             cell.configure()
             return cell
         }
