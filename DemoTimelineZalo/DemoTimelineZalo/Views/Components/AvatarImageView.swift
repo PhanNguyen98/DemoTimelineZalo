@@ -23,6 +23,7 @@ final class AvatarImageView: UIImageView {
         layer.cornerRadius = bounds.width / 2
         clipsToBounds = true
         contentMode = .scaleAspectFill
+        image = UIImage(systemName: "person.circle.fill")?.withTintColor(.blue, renderingMode: .alwaysOriginal)
     }
 }
 

@@ -52,6 +52,9 @@
                                         <state key="normal">
                                             <imageReference key="image" image="square.and.pencil" catalog="system" symbolScale="large"/>
                                         </state>
+                                        <connections>
+                                            <action selector="onPressCreatePost:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="nWH-BX-bHr"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -94,6 +97,10 @@
                             <constraint firstItem="CMz-rf-Fd7" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="z9O-0n-2XK"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="searchView" destination="hFV-aV-j6L" id="V2P-uD-vts"/>
+                        <outlet property="tableView" destination="3Tw-Av-jed" id="rNt-hT-VTM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		04D0C2DBE77D99C70EB64924 /* Pods_DemoTimelineZalo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D34AD68EF885618B218E439 /* Pods_DemoTimelineZalo.framework */; };
+		311042542E58717400C8E858 /* SampleVideo_1280x720_5mb.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 311042532E58717400C8E858 /* SampleVideo_1280x720_5mb.mp4 */; };
 		312B4AFA2E56C14A00B4BEA3 /* PostDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312B4AF92E56C14A00B4BEA3 /* PostDataManager.swift */; };
 		312B4B002E56C1D800B4BEA3 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312B4AFF2E56C1D800B4BEA3 /* LoadingView.swift */; };
 		312B4B062E56C2A400B4BEA3 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312B4B052E56C2A400B4BEA3 /* BaseViewController.swift */; };
@@ -38,6 +39,12 @@
 		314499182E5703E90037CCAA /* SFProDisplay-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 314499142E5703E90037CCAA /* SFProDisplay-Semibold.ttf */; };
 		314499192E5703E90037CCAA /* SFProDisplay-Heavy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 314499112E5703E90037CCAA /* SFProDisplay-Heavy.ttf */; };
 		3144991C2E570AA40037CCAA /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3144991B2E570AA40037CCAA /* GradientView.swift */; };
+		319F238A2E580DE8004C691E /* PostImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 319F23892E580DE8004C691E /* PostImageCollectionViewCell.xib */; };
+		319F238B2E580DE8004C691E /* PostImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319F23882E580DE8004C691E /* PostImageCollectionViewCell.swift */; };
+		319F238D2E581B03004C691E /* PostImageLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319F238C2E581B03004C691E /* PostImageLayout.swift */; };
+		319F238F2E58209B004C691E /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319F238E2E58209B004C691E /* PostTableViewCell.swift */; };
+		319F23922E5824BF004C691E /* PostMediaCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 319F23912E5824BF004C691E /* PostMediaCollectionViewCell.xib */; };
+		319F23932E5824BF004C691E /* PostMediaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319F23902E5824BF004C691E /* PostMediaCollectionViewCell.swift */; };
 		319FAF792E571863006012FE /* PostHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319FAF782E571863006012FE /* PostHeaderView.swift */; };
 		319FAF7B2E571880006012FE /* PostHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 319FAF7A2E571880006012FE /* PostHeaderView.xib */; };
 		319FAF832E571B06006012FE /* PostContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319FAF812E571B06006012FE /* PostContentView.swift */; };
@@ -49,13 +56,10 @@
 		31DAAAB32E570EA30073D8E4 /* CreatePostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31DAAAB22E570EA30073D8E4 /* CreatePostTableViewCell.xib */; };
 		31DAAAB42E570EA30073D8E4 /* CreatePostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DAAAB12E570EA30073D8E4 /* CreatePostTableViewCell.swift */; };
 		31DAAAB62E5710100073D8E4 /* AvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DAAAB52E5710100073D8E4 /* AvatarImageView.swift */; };
-		31DAAABC2E5713520073D8E4 /* PostMediaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DAAABA2E5713520073D8E4 /* PostMediaCollectionViewCell.swift */; };
-		31DAAABD2E5713520073D8E4 /* PostMediaCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31DAAABB2E5713520073D8E4 /* PostMediaCollectionViewCell.xib */; };
-		31DAAACE2E5716CE0073D8E4 /* PostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31DAAACD2E5716CE0073D8E4 /* PostTableViewCell.xib */; };
-		31DAAACF2E5716CE0073D8E4 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DAAACC2E5716CE0073D8E4 /* PostTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		311042532E58717400C8E858 /* SampleVideo_1280x720_5mb.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = SampleVideo_1280x720_5mb.mp4; sourceTree = "<group>"; };
 		312B4AF92E56C14A00B4BEA3 /* PostDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDataManager.swift; sourceTree = "<group>"; };
 		312B4AFF2E56C1D800B4BEA3 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		312B4B052E56C2A400B4BEA3 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -86,6 +90,12 @@
 		314499132E5703E90037CCAA /* SFProDisplay-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Regular.ttf"; sourceTree = "<group>"; };
 		314499142E5703E90037CCAA /* SFProDisplay-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Semibold.ttf"; sourceTree = "<group>"; };
 		3144991B2E570AA40037CCAA /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		319F23882E580DE8004C691E /* PostImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		319F23892E580DE8004C691E /* PostImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostImageCollectionViewCell.xib; sourceTree = "<group>"; };
+		319F238C2E581B03004C691E /* PostImageLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImageLayout.swift; sourceTree = "<group>"; };
+		319F238E2E58209B004C691E /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
+		319F23902E5824BF004C691E /* PostMediaCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostMediaCollectionViewCell.swift; sourceTree = "<group>"; };
+		319F23912E5824BF004C691E /* PostMediaCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostMediaCollectionViewCell.xib; sourceTree = "<group>"; };
 		319FAF782E571863006012FE /* PostHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostHeaderView.swift; sourceTree = "<group>"; };
 		319FAF7A2E571880006012FE /* PostHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostHeaderView.xib; sourceTree = "<group>"; };
 		319FAF812E571B06006012FE /* PostContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostContentView.swift; sourceTree = "<group>"; };
@@ -99,10 +109,6 @@
 		31DAAAB12E570EA30073D8E4 /* CreatePostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostTableViewCell.swift; sourceTree = "<group>"; };
 		31DAAAB22E570EA30073D8E4 /* CreatePostTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreatePostTableViewCell.xib; sourceTree = "<group>"; };
 		31DAAAB52E5710100073D8E4 /* AvatarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarImageView.swift; sourceTree = "<group>"; };
-		31DAAABA2E5713520073D8E4 /* PostMediaCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostMediaCollectionViewCell.swift; sourceTree = "<group>"; };
-		31DAAABB2E5713520073D8E4 /* PostMediaCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostMediaCollectionViewCell.xib; sourceTree = "<group>"; };
-		31DAAACC2E5716CE0073D8E4 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
-		31DAAACD2E5716CE0073D8E4 /* PostTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostTableViewCell.xib; sourceTree = "<group>"; };
 		4D34AD68EF885618B218E439 /* Pods_DemoTimelineZalo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DemoTimelineZalo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		51893D1463CD89840D5CBB36 /* Pods-DemoTimelineZalo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoTimelineZalo.release.xcconfig"; path = "Target Support Files/Pods-DemoTimelineZalo/Pods-DemoTimelineZalo.release.xcconfig"; sourceTree = "<group>"; };
 		9D1B710818952D5E8716A451 /* Pods-DemoTimelineZalo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoTimelineZalo.debug.xcconfig"; path = "Target Support Files/Pods-DemoTimelineZalo/Pods-DemoTimelineZalo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -127,6 +133,14 @@
 				51893D1463CD89840D5CBB36 /* Pods-DemoTimelineZalo.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		311042522E58715200C8E858 /* Videos */ = {
+			isa = PBXGroup;
+			children = (
+				311042532E58717400C8E858 /* SampleVideo_1280x720_5mb.mp4 */,
+			);
+			path = Videos;
 			sourceTree = "<group>";
 		};
 		312B4AF82E56C13400B4BEA3 /* Managers */ = {
@@ -188,6 +202,7 @@
 		312B4B092E56C2B700B4BEA3 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				311042522E58715200C8E858 /* Videos */,
 				312B4B0B2E56C2DA00B4BEA3 /* Fonts */,
 				312B4B0A2E56C2C500B4BEA3 /* Storyboards */,
 			);
@@ -299,6 +314,15 @@
 			path = SFPro;
 			sourceTree = "<group>";
 		};
+		319F23872E580DBA004C691E /* PostImageCell */ = {
+			isa = PBXGroup;
+			children = (
+				319F23882E580DE8004C691E /* PostImageCollectionViewCell.swift */,
+				319F23892E580DE8004C691E /* PostImageCollectionViewCell.xib */,
+			);
+			path = PostImageCell;
+			sourceTree = "<group>";
+		};
 		319FAF772E571826006012FE /* PostHeaderView */ = {
 			isa = PBXGroup;
 			children = (
@@ -312,6 +336,7 @@
 			isa = PBXGroup;
 			children = (
 				319FAF812E571B06006012FE /* PostContentView.swift */,
+				319F238C2E581B03004C691E /* PostImageLayout.swift */,
 			);
 			path = PostContentView;
 			sourceTree = "<group>";
@@ -365,8 +390,9 @@
 			isa = PBXGroup;
 			children = (
 				31DAAACB2E5716680073D8E4 /* PostCell */,
-				31DAAAB92E5712600073D8E4 /* PostMediaCell */,
 				31DAAAB82E5712410073D8E4 /* CreatePostCell */,
+				31DAAAB12E570EA30073D8E4 /* CreatePostTableViewCell.swift */,
+				31DAAAB22E570EA30073D8E4 /* CreatePostTableViewCell.xib */,
 			);
 			path = PostListCells;
 			sourceTree = "<group>";
@@ -374,8 +400,7 @@
 		31DAAAB82E5712410073D8E4 /* CreatePostCell */ = {
 			isa = PBXGroup;
 			children = (
-				31DAAAB12E570EA30073D8E4 /* CreatePostTableViewCell.swift */,
-				31DAAAB22E570EA30073D8E4 /* CreatePostTableViewCell.xib */,
+				31DAAAB92E5712600073D8E4 /* PostMediaCell */,
 			);
 			path = CreatePostCell;
 			sourceTree = "<group>";
@@ -383,8 +408,8 @@
 		31DAAAB92E5712600073D8E4 /* PostMediaCell */ = {
 			isa = PBXGroup;
 			children = (
-				31DAAABA2E5713520073D8E4 /* PostMediaCollectionViewCell.swift */,
-				31DAAABB2E5713520073D8E4 /* PostMediaCollectionViewCell.xib */,
+				319F23902E5824BF004C691E /* PostMediaCollectionViewCell.swift */,
+				319F23912E5824BF004C691E /* PostMediaCollectionViewCell.xib */,
 			);
 			path = PostMediaCell;
 			sourceTree = "<group>";
@@ -392,10 +417,10 @@
 		31DAAACB2E5716680073D8E4 /* PostCell */ = {
 			isa = PBXGroup;
 			children = (
+				319F23872E580DBA004C691E /* PostImageCell */,
 				319FAF822E571B06006012FE /* PostContentView */,
 				319FAF772E571826006012FE /* PostHeaderView */,
-				31DAAACC2E5716CE0073D8E4 /* PostTableViewCell.swift */,
-				31DAAACD2E5716CE0073D8E4 /* PostTableViewCell.xib */,
+				319F238E2E58209B004C691E /* PostTableViewCell.swift */,
 			);
 			path = PostCell;
 			sourceTree = "<group>";
@@ -470,20 +495,21 @@
 			files = (
 				314499152E5703E90037CCAA /* SFProDisplay-Medium.ttf in Resources */,
 				314499162E5703E90037CCAA /* SFProDisplay-Regular.ttf in Resources */,
+				311042542E58717400C8E858 /* SampleVideo_1280x720_5mb.mp4 in Resources */,
 				314499172E5703E90037CCAA /* SFProDisplay-Bold.ttf in Resources */,
 				314499182E5703E90037CCAA /* SFProDisplay-Semibold.ttf in Resources */,
 				314499192E5703E90037CCAA /* SFProDisplay-Heavy.ttf in Resources */,
 				312B4B292E56C6B400B4BEA3 /* PostSearch.storyboard in Resources */,
-				31DAAACE2E5716CE0073D8E4 /* PostTableViewCell.xib in Resources */,
 				31DAAAB32E570EA30073D8E4 /* CreatePostTableViewCell.xib in Resources */,
 				31D50F1C2E55A83800E8FBFB /* Assets.xcassets in Resources */,
+				319F238A2E580DE8004C691E /* PostImageCollectionViewCell.xib in Resources */,
 				312B4B232E56C66000B4BEA3 /* PostList.storyboard in Resources */,
 				312B4B2D2E56C7D000B4BEA3 /* SplashViewController.xib in Resources */,
 				312B4B252E56C67700B4BEA3 /* CreatePost.storyboard in Resources */,
 				31D50F1E2E55A83800E8FBFB /* LaunchScreen.storyboard in Resources */,
+				319F23922E5824BF004C691E /* PostMediaCollectionViewCell.xib in Resources */,
 				319FAF7B2E571880006012FE /* PostHeaderView.xib in Resources */,
 				312B4B272E56C68400B4BEA3 /* PostDetail.storyboard in Resources */,
-				31DAAABD2E5713520073D8E4 /* PostMediaCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -519,8 +545,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				319F23932E5824BF004C691E /* PostMediaCollectionViewCell.swift in Sources */,
 				312B4B342E56C97C00B4BEA3 /* UIViewController+Extensions.swift in Sources */,
 				312B4B302E56C8F000B4BEA3 /* UIView+Extensions.swift in Sources */,
+				319F238F2E58209B004C691E /* PostTableViewCell.swift in Sources */,
 				312B4B152E56C4D100B4BEA3 /* Application.swift in Sources */,
 				319FAF832E571B06006012FE /* PostContentView.swift in Sources */,
 				31DAAAB42E570EA30073D8E4 /* CreatePostTableViewCell.swift in Sources */,
@@ -529,10 +557,11 @@
 				312B4B362E56C9C000B4BEA3 /* UITableView+Extensions.swift in Sources */,
 				31D50F192E55A83800E8FBFB /* AppDelegate.swift in Sources */,
 				312B4B082E56C2AC00B4BEA3 /* BaseViewXIB.swift in Sources */,
+				319F238D2E581B03004C691E /* PostImageLayout.swift in Sources */,
+				319F238B2E580DE8004C691E /* PostImageCollectionViewCell.swift in Sources */,
 				312B4B102E56C31200B4BEA3 /* AlertHelper.swift in Sources */,
 				312B4B1D2E56C62300B4BEA3 /* CreatePostViewController.swift in Sources */,
 				312B4B002E56C1D800B4BEA3 /* LoadingView.swift in Sources */,
-				31DAAABC2E5713520073D8E4 /* PostMediaCollectionViewCell.swift in Sources */,
 				31DAAAB62E5710100073D8E4 /* AvatarImageView.swift in Sources */,
 				312B4B382E56C9E400B4BEA3 /* UICollectionView+Extensions.swift in Sources */,
 				312B4B1B2E56C61600B4BEA3 /* PostListViewController.swift in Sources */,
@@ -547,7 +576,6 @@
 				312B4B2E2E56C7D000B4BEA3 /* SplashViewController.swift in Sources */,
 				3144990F2E5700620037CCAA /* CoreDataManager.swift in Sources */,
 				312B4B3C2E56CD5200B4BEA3 /* Constants.swift in Sources */,
-				31DAAACF2E5716CE0073D8E4 /* PostTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
