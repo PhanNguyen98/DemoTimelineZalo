@@ -11,7 +11,6 @@ class ImagePostContentView: BasePostContentView {
     
     private let mediaCollectionView: UICollectionView = {
         let layout = PostImageLayout()
-        layout.numberOfColumns = 2
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         
         let view = GradientView()
@@ -33,7 +32,7 @@ class ImagePostContentView: BasePostContentView {
     
     private var currentPost: Post?
     private var mediaCollectionHeightConstraint: NSLayoutConstraint?
-    private var countImage: Int = 3
+    private var countImage: Int = 5
     
     // MARK: - Setup
     override func setupUI() {

@@ -15,8 +15,7 @@ class PostImageLayout: UICollectionViewLayout {
         static let height4or5Items: CGFloat = 450
         static let columnUnitDivisor: CGFloat = 5
     }
-
-    var numberOfColumns: Int = 2
+    
     var cellPadding: CGFloat = 8
 
     private var cache: [UICollectionViewLayoutAttributes] = []

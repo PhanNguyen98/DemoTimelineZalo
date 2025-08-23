@@ -33,6 +33,9 @@
                                         <state key="normal">
                                             <imageReference key="image" image="xmark" catalog="system" symbolScale="large"/>
                                         </state>
+                                        <connections>
+                                            <action selector="onPressClose:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="htb-wB-1KE"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8C7-YF-Yyf">
                                         <rect key="frame" x="347" y="68" width="30" height="26"/>
@@ -44,6 +47,9 @@
                                         <state key="normal">
                                             <imageReference key="image" image="paperplane.fill" catalog="system" symbolScale="large"/>
                                         </state>
+                                        <connections>
+                                            <action selector="onPressSend:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="CQL-Kr-fI2"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" name="color_F3F5F6"/>
@@ -55,19 +61,31 @@
                                     <constraint firstAttribute="height" constant="110" id="zLn-cO-Qw5"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cn3-rt-gSE">
+                                <rect key="frame" x="0.0" y="110" width="393" height="674"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="cn3-rt-gSE" firstAttribute="top" secondItem="JQE-cv-QlF" secondAttribute="bottom" id="84F-iS-oEx"/>
                             <constraint firstItem="JQE-cv-QlF" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="BUG-kP-ao7"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="cn3-rt-gSE" secondAttribute="trailing" id="Br7-7e-3xz"/>
+                            <constraint firstItem="cn3-rt-gSE" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="Fbo-73-n7y"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="cn3-rt-gSE" secondAttribute="bottom" id="W2S-yd-0Mx"/>
                             <constraint firstItem="JQE-cv-QlF" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="YRF-cx-GNg"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="JQE-cv-QlF" secondAttribute="trailing" id="ipR-9k-Vbp"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="contentView" destination="cn3-rt-gSE" id="3pe-QY-8ZI"/>
+                        <outlet property="sendButton" destination="8C7-YF-Yyf" id="RJc-vy-9Bm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="115" y="-2"/>
+            <point key="canvasLocation" x="113.74045801526717" y="-2.1126760563380285"/>
         </scene>
     </scenes>
     <resources>

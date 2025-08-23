@@ -26,7 +26,14 @@ class PostListViewController: BaseViewController {
         tableView.estimatedRowHeight = 300
     }
     
+    private func presentCreatePostVC() {
+        let createPostVC = CreatePostViewController.instantiate(from: .createPost)
+        createPostVC.modalPresentationStyle = .overFullScreen
+        present(createPostVC, animated: true)
+    }
+    
     @IBAction func onPressCreatePost(_ sender: Any) {
+        presentCreatePostVC()
     }
     
 }
@@ -34,6 +41,12 @@ class PostListViewController: BaseViewController {
 // MARK: - UITableViewDelegate
 extension PostListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch PostListSection.allCases[indexPath.section] {
+        case .createPost:
+            presentCreatePostVC()
+        case .postList:
+            break
+        }
     }
 }
 
@@ -58,11 +71,24 @@ extension PostListViewController: UITableViewDataSource {
         switch PostListSection.allCases[section] {
         case .createPost:
             let cell: CreatePostTableViewCell = tableView.dequeueReusableCell(for: indexPath)
+            cell.delegate = self
             return cell
         case .postList:
             let cell: UserPostTableViewCell = tableView.dequeueReusableCell(for: indexPath)
             cell.configure()
             return cell
+        }
+    }
+}
+
+// MARK: CreatePostTableViewCellDelegate
+extension PostListViewController: CreatePostTableViewCellDelegate {
+    func createPostCell(_ cell: CreatePostTableViewCell, didSelect media: PostMedia) {
+        switch media {
+        case .image:
+            presentCreatePostVC()
+        case .video:
+            presentCreatePostVC()
         }
     }
 }

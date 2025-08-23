@@ -51,6 +51,8 @@
 		31BB25952E58A2AD009BD971 /* BasePostContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BB25942E58A2AD009BD971 /* BasePostContentView.swift */; };
 		31BB25972E58A33E009BD971 /* ImagePostContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BB25962E58A33E009BD971 /* ImagePostContentView.swift */; };
 		31BB259B2E58A46A009BD971 /* VideoPostContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BB259A2E58A46A009BD971 /* VideoPostContentView.swift */; };
+		31D48CF92E59734D007D99FF /* TextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D48CF82E59734D007D99FF /* TextInputView.swift */; };
+		31D48CFC2E59757A007D99FF /* SelectedImagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D48CFB2E59757A007D99FF /* SelectedImagesView.swift */; };
 		31D50F192E55A83800E8FBFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D50F102E55A83800E8FBFB /* AppDelegate.swift */; };
 		31D50F1A2E55A83800E8FBFB /* DemoTimelineZalo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 31D50F122E55A83800E8FBFB /* DemoTimelineZalo.xcdatamodeld */; };
 		31D50F1B2E55A83800E8FBFB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D50F162E55A83800E8FBFB /* SceneDelegate.swift */; };
@@ -59,6 +61,10 @@
 		31DAAAB32E570EA30073D8E4 /* CreatePostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31DAAAB22E570EA30073D8E4 /* CreatePostTableViewCell.xib */; };
 		31DAAAB42E570EA30073D8E4 /* CreatePostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DAAAB12E570EA30073D8E4 /* CreatePostTableViewCell.swift */; };
 		31DAAAB62E5710100073D8E4 /* AvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DAAAB52E5710100073D8E4 /* AvatarImageView.swift */; };
+		31EBABAD2E59A23100FA2DC5 /* SelectedVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EBABAC2E59A23100FA2DC5 /* SelectedVideoView.swift */; };
+		31EBABB02E59A2B800FA2DC5 /* DiaryToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EBABAF2E59A2B800FA2DC5 /* DiaryToolbarView.swift */; };
+		31EBABB22E59A6AD00FA2DC5 /* CreatePostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EBABB12E59A6AD00FA2DC5 /* CreatePostView.swift */; };
+		31EBABB42E59BF5100FA2DC5 /* MediaPickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EBABB32E59BF5100FA2DC5 /* MediaPickerManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -105,6 +111,8 @@
 		31BB25942E58A2AD009BD971 /* BasePostContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePostContentView.swift; sourceTree = "<group>"; };
 		31BB25962E58A33E009BD971 /* ImagePostContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePostContentView.swift; sourceTree = "<group>"; };
 		31BB259A2E58A46A009BD971 /* VideoPostContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPostContentView.swift; sourceTree = "<group>"; };
+		31D48CF82E59734D007D99FF /* TextInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputView.swift; sourceTree = "<group>"; };
+		31D48CFB2E59757A007D99FF /* SelectedImagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedImagesView.swift; sourceTree = "<group>"; };
 		31D50ED92E55A7EC00E8FBFB /* DemoTimelineZalo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoTimelineZalo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31D50F102E55A83800E8FBFB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		31D50F112E55A83800E8FBFB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -115,6 +123,10 @@
 		31DAAAB12E570EA30073D8E4 /* CreatePostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostTableViewCell.swift; sourceTree = "<group>"; };
 		31DAAAB22E570EA30073D8E4 /* CreatePostTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreatePostTableViewCell.xib; sourceTree = "<group>"; };
 		31DAAAB52E5710100073D8E4 /* AvatarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarImageView.swift; sourceTree = "<group>"; };
+		31EBABAC2E59A23100FA2DC5 /* SelectedVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedVideoView.swift; sourceTree = "<group>"; };
+		31EBABAF2E59A2B800FA2DC5 /* DiaryToolbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryToolbarView.swift; sourceTree = "<group>"; };
+		31EBABB12E59A6AD00FA2DC5 /* CreatePostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostView.swift; sourceTree = "<group>"; };
+		31EBABB32E59BF5100FA2DC5 /* MediaPickerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaPickerManager.swift; sourceTree = "<group>"; };
 		4D34AD68EF885618B218E439 /* Pods_DemoTimelineZalo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DemoTimelineZalo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		51893D1463CD89840D5CBB36 /* Pods-DemoTimelineZalo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoTimelineZalo.release.xcconfig"; path = "Target Support Files/Pods-DemoTimelineZalo/Pods-DemoTimelineZalo.release.xcconfig"; sourceTree = "<group>"; };
 		9D1B710818952D5E8716A451 /* Pods-DemoTimelineZalo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoTimelineZalo.debug.xcconfig"; path = "Target Support Files/Pods-DemoTimelineZalo/Pods-DemoTimelineZalo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -154,6 +166,7 @@
 			children = (
 				312B4AF92E56C14A00B4BEA3 /* PostDataManager.swift */,
 				3144990E2E5700620037CCAA /* CoreDataManager.swift */,
+				31EBABB32E59BF5100FA2DC5 /* MediaPickerManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -278,6 +291,7 @@
 		312B4B172E56C51400B4BEA3 /* CreatePost */ = {
 			isa = PBXGroup;
 			children = (
+				3162E3F22E596A58008D2E94 /* CreatePostView */,
 				312B4B1C2E56C62300B4BEA3 /* CreatePostViewController.swift */,
 			);
 			path = CreatePost;
@@ -320,6 +334,18 @@
 			path = SFPro;
 			sourceTree = "<group>";
 		};
+		3162E3F22E596A58008D2E94 /* CreatePostView */ = {
+			isa = PBXGroup;
+			children = (
+				31EBABAE2E59A29200FA2DC5 /* DiaryToolbarView */,
+				31EBABAB2E59987200FA2DC5 /* SelectedVideoView */,
+				31D48CFA2E59752B007D99FF /* SelectedImagesView */,
+				31D48CF72E59732E007D99FF /* TextInputView */,
+				31EBABB12E59A6AD00FA2DC5 /* CreatePostView.swift */,
+			);
+			path = CreatePostView;
+			sourceTree = "<group>";
+		};
 		319F23872E580DBA004C691E /* PostImageCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -341,6 +367,7 @@
 		319FAF822E571B06006012FE /* PostContentView */ = {
 			isa = PBXGroup;
 			children = (
+				319F23872E580DBA004C691E /* PostImageCell */,
 				31BB25992E58A35D009BD971 /* VideoPostContentView */,
 				31BB25982E58A344009BD971 /* ImagePostContentView */,
 				31BB25942E58A2AD009BD971 /* BasePostContentView.swift */,
@@ -371,6 +398,22 @@
 				31BB259A2E58A46A009BD971 /* VideoPostContentView.swift */,
 			);
 			path = VideoPostContentView;
+			sourceTree = "<group>";
+		};
+		31D48CF72E59732E007D99FF /* TextInputView */ = {
+			isa = PBXGroup;
+			children = (
+				31D48CF82E59734D007D99FF /* TextInputView.swift */,
+			);
+			path = TextInputView;
+			sourceTree = "<group>";
+		};
+		31D48CFA2E59752B007D99FF /* SelectedImagesView */ = {
+			isa = PBXGroup;
+			children = (
+				31D48CFB2E59757A007D99FF /* SelectedImagesView.swift */,
+			);
+			path = SelectedImagesView;
 			sourceTree = "<group>";
 		};
 		31D50ED02E55A7EC00E8FBFB = {
@@ -449,13 +492,28 @@
 		31DAAACB2E5716680073D8E4 /* PostCell */ = {
 			isa = PBXGroup;
 			children = (
-				319F23872E580DBA004C691E /* PostImageCell */,
 				319FAF822E571B06006012FE /* PostContentView */,
 				319FAF772E571826006012FE /* PostHeaderView */,
 				31BB25932E589F73009BD971 /* UserPostCell */,
 				31BB25912E589EE8009BD971 /* BasePostTableViewCell.swift */,
 			);
 			path = PostCell;
+			sourceTree = "<group>";
+		};
+		31EBABAB2E59987200FA2DC5 /* SelectedVideoView */ = {
+			isa = PBXGroup;
+			children = (
+				31EBABAC2E59A23100FA2DC5 /* SelectedVideoView.swift */,
+			);
+			path = SelectedVideoView;
+			sourceTree = "<group>";
+		};
+		31EBABAE2E59A29200FA2DC5 /* DiaryToolbarView */ = {
+			isa = PBXGroup;
+			children = (
+				31EBABAF2E59A2B800FA2DC5 /* DiaryToolbarView.swift */,
+			);
+			path = DiaryToolbarView;
 			sourceTree = "<group>";
 		};
 		BAF888176498E0A1E282E9DB /* Frameworks */ = {
@@ -477,6 +535,7 @@
 				31D50ED52E55A7EC00E8FBFB /* Sources */,
 				31D50ED62E55A7EC00E8FBFB /* Frameworks */,
 				31D50ED72E55A7EC00E8FBFB /* Resources */,
+				6655BD7FF1B6B65CF3F019C5 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -549,6 +608,27 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		6655BD7FF1B6B65CF3F019C5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DemoTimelineZalo/Pods-DemoTimelineZalo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DemoTimelineZalo/Pods-DemoTimelineZalo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DemoTimelineZalo/Pods-DemoTimelineZalo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		E9D8430671237358935FC340 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -578,6 +658,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31EBABB02E59A2B800FA2DC5 /* DiaryToolbarView.swift in Sources */,
 				319F23932E5824BF004C691E /* PostMediaCollectionViewCell.swift in Sources */,
 				312B4B342E56C97C00B4BEA3 /* UIViewController+Extensions.swift in Sources */,
 				31BB25952E58A2AD009BD971 /* BasePostContentView.swift in Sources */,
@@ -591,6 +672,7 @@
 				312B4B362E56C9C000B4BEA3 /* UITableView+Extensions.swift in Sources */,
 				31D50F192E55A83800E8FBFB /* AppDelegate.swift in Sources */,
 				312B4B082E56C2AC00B4BEA3 /* BaseViewXIB.swift in Sources */,
+				31D48CFC2E59757A007D99FF /* SelectedImagesView.swift in Sources */,
 				319F238D2E581B03004C691E /* PostImageLayout.swift in Sources */,
 				319F238B2E580DE8004C691E /* PostImageCollectionViewCell.swift in Sources */,
 				312B4B102E56C31200B4BEA3 /* AlertHelper.swift in Sources */,
@@ -601,13 +683,17 @@
 				312B4B1B2E56C61600B4BEA3 /* PostListViewController.swift in Sources */,
 				312B4B062E56C2A400B4BEA3 /* BaseViewController.swift in Sources */,
 				3144991C2E570AA40037CCAA /* GradientView.swift in Sources */,
+				31EBABB22E59A6AD00FA2DC5 /* CreatePostView.swift in Sources */,
 				312B4AFA2E56C14A00B4BEA3 /* PostDataManager.swift in Sources */,
 				312B4B1F2E56C63000B4BEA3 /* PostDetailViewController.swift in Sources */,
+				31EBABB42E59BF5100FA2DC5 /* MediaPickerManager.swift in Sources */,
 				31D50F1A2E55A83800E8FBFB /* DemoTimelineZalo.xcdatamodeld in Sources */,
 				31D50F1B2E55A83800E8FBFB /* SceneDelegate.swift in Sources */,
 				31BB25922E589EE8009BD971 /* BasePostTableViewCell.swift in Sources */,
+				31D48CF92E59734D007D99FF /* TextInputView.swift in Sources */,
 				312B4B212E56C63900B4BEA3 /* PostSearchViewController.swift in Sources */,
 				312B4B322E56C95000B4BEA3 /* UIColor+Extensions.swift in Sources */,
+				31EBABAD2E59A23100FA2DC5 /* SelectedVideoView.swift in Sources */,
 				312B4B2E2E56C7D000B4BEA3 /* SplashViewController.swift in Sources */,
 				3144990F2E5700620037CCAA /* CoreDataManager.swift in Sources */,
 				31BB25972E58A33E009BD971 /* ImagePostContentView.swift in Sources */,
@@ -638,6 +724,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = H55BHVY789;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DemoTimelineZalo/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -668,6 +755,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = H55BHVY789;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DemoTimelineZalo/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

@@ -7,13 +7,20 @@
 
 import UIKit
 
+protocol CreatePostTableViewCellDelegate: AnyObject {
+    func createPostCell(_ cell: CreatePostTableViewCell, didSelect media: PostMedia)
+}
+
 class CreatePostTableViewCell: UITableViewCell {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var avatarImageView: AvatarImageView!
     
+    weak var delegate: CreatePostTableViewCellDelegate?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        selectionStyle = .none
         setupCollectionView()
     }
 
@@ -31,6 +38,8 @@ class CreatePostTableViewCell: UITableViewCell {
 // MARK: UICollectionViewDelegate
 extension CreatePostTableViewCell: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let media = PostMedia.allCases[indexPath.row]
+        delegate?.createPostCell(self, didSelect: media)
     }
 }
 

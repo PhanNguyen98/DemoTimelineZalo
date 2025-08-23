@@ -27,6 +27,7 @@ class BasePostTableViewCell: UITableViewCell {
     }
     
     func setupUI() {
+        selectionStyle = .none
         contentView.addSubview(lineView)
         NSLayoutConstraint.activate([
             lineView.topAnchor.constraint(equalTo: contentView.topAnchor),
