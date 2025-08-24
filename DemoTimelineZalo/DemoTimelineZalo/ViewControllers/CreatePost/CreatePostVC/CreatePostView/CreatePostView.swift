@@ -46,6 +46,6 @@ class CreatePostView: UIView {
         
         contentStack.addArrangedSubview(textInputView)
         contentStack.addArrangedSubview(imageView)
-//        contentStack.addArrangedSubview(videoView)
+        contentStack.addArrangedSubview(videoView)
     }
 }

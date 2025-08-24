@@ -11,6 +11,7 @@ import UIKit
 protocol SelectedImagesViewDelegate: AnyObject {
     func selectedImagesViewDidTapAddImage(_ view: SelectedImagesView)
     func selectedImagesView(_ view: SelectedImagesView, didDeleteImageAt index: Int)
+    func selectedImagesView(_ view: SelectedImagesView, didSelectImage image: UIImage, at index: Int)
 }
 
 class SelectedImagesView: UIView {
@@ -93,8 +94,12 @@ class SelectedImagesView: UIView {
     // MARK: - Configure
     func configure(images: [UIImage]) {
         dataImages = images
-        mediaCollectionHeightConstraint?.constant = PostImageLayout.heightForItemCount(images.count)
-        addImageButton.isHidden = images.isEmpty
+        updateLayout()
+    }
+    
+    func updateLayout() {
+        mediaCollectionHeightConstraint?.constant = PostImageLayout.heightForItemCount(dataImages.count)
+        addImageButton.isHidden = dataImages.isEmpty
         mediaCollectionView.reloadData()
     }
 }
@@ -102,7 +107,8 @@ class SelectedImagesView: UIView {
 // MARK: - UICollectionViewDelegate
 extension SelectedImagesView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //
+        let image = dataImages[indexPath.row]
+        delegate?.selectedImagesView(self, didSelectImage: image, at: indexPath.row)
     }
 }
 
@@ -122,12 +128,12 @@ extension SelectedImagesView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let row = indexPath.row
         let cell: PostImageCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
-        cell.configure(image: dataImages[row], index: row, totalImages: dataImages.count)
+        cell.configureSelected(image: dataImages[row], index: row, totalImages: dataImages.count)
         cell.onDeleteTapped = { [weak self] in
             guard let self = self else { return }
             self.delegate?.selectedImagesView(self, didDeleteImageAt: row)
             dataImages.remove(at: row)
-            mediaCollectionView.reloadData()
+            updateLayout()
         }
         return cell
     }

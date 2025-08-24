@@ -6,79 +6,94 @@
 //
 
 import UIKit
-import PhotosUI
+import YPImagePicker
+import AVFoundation
 
 protocol MediaPickerManagerDelegate: AnyObject {
     func mediaPickerManager(_ manager: MediaPickerManager, didPickImages images: [UIImage])
     func mediaPickerManager(_ manager: MediaPickerManager, didPickVideo url: URL)
 }
 
-class MediaPickerManager: NSObject, PHPickerViewControllerDelegate {
+class MediaPickerManager: NSObject {
     weak var delegate: MediaPickerManagerDelegate?
+    private var previouslySelectedItems: [YPMediaItem] = []
 
     // Present image picker allowing multiple images
     func presentImagePicker(from viewController: UIViewController) {
-        var configuration = PHPickerConfiguration()
-        configuration.filter = .images
-        configuration.selectionLimit = 0 // 0 means no limit
-        let picker = PHPickerViewController(configuration: configuration)
-        picker.delegate = self
-        viewController.present(picker, animated: true, completion: nil)
+        var config = YPImagePickerConfiguration()
+        config.library.mediaType = .photo
+        config.library.maxNumberOfItems = 99 // allow multiple selection
+        config.library.defaultMultipleSelection = true
+        config.screens = [.library, .photo]
+        config.startOnScreen = .library
+        config.showsPhotoFilters = false
+        config.library.preSelectItemOnMultipleSelection = false
+        config.onlySquareImagesFromCamera = false
+        config.shouldSaveNewPicturesToAlbum = false
+        config.library.skipSelectionsGallery = false
+        config.library.preselectedItems = previouslySelectedItems
+        config.library.itemOverlayType = .none
+
+        let picker = YPImagePicker(configuration: config)
+        picker.didFinishPicking { [weak self, weak picker] items, _ in
+            let photoItems = items.filter {
+                if case .photo = $0 { return true }
+                return false
+            }
+            self?.previouslySelectedItems = photoItems
+            var images: [UIImage] = []
+            for item in photoItems {
+                if case .photo(let photo) = item {
+                    images.append(photo.image)
+                }
+            }
+            DispatchQueue.main.async {
+                picker?.dismiss(animated: true, completion: nil)
+            }
+            if !images.isEmpty {
+                self?.delegate?.mediaPickerManager(self!, didPickImages: images)
+            }
+        }
+        DispatchQueue.main.async {
+            viewController.present(picker, animated: true, completion: nil)
+        }
     }
 
     // Present video picker allowing one video
     func presentVideoPicker(from viewController: UIViewController) {
-        var configuration = PHPickerConfiguration()
-        configuration.filter = .videos
-        configuration.selectionLimit = 1
-        let picker = PHPickerViewController(configuration: configuration)
-        picker.delegate = self
-        viewController.present(picker, animated: true, completion: nil)
-    }
+        var config = YPImagePickerConfiguration()
+        config.library.mediaType = .video
+        config.library.maxNumberOfItems = 1
+        config.screens = [.library, .video]
+        config.startOnScreen = .library
+        config.showsPhotoFilters = false
+        config.library.defaultMultipleSelection = false
+        config.library.skipSelectionsGallery = true
+        config.library.preselectedItems = []
+        config.library.itemOverlayType = .none
+        config.video.compression = AVAssetExportPresetHighestQuality
+        config.video.fileType = .mp4
 
-    // MARK: - PHPickerViewControllerDelegate
-    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
-        picker.dismiss(animated: true, completion: nil)
-        // Separate images and videos
-        let imageResults = results.filter { $0.itemProvider.canLoadObject(ofClass: UIImage.self) }
-        let videoResults = results.filter { $0.itemProvider.hasItemConformingToTypeIdentifier("public.movie") }
-
-        // Handle images
-        if !imageResults.isEmpty {
-            var images: [UIImage] = []
-            let dispatchGroup = DispatchGroup()
-            for result in imageResults {
-                dispatchGroup.enter()
-                result.itemProvider.loadObject(ofClass: UIImage.self) { object, error in
-                    if let image = object as? UIImage {
-                        images.append(image)
+        let picker = YPImagePicker(configuration: config)
+        picker.didFinishPicking { [weak self, weak picker] items, _ in
+            for item in items {
+                switch item {
+                case .video(let video):
+                    DispatchQueue.main.async {
+                        picker?.dismiss(animated: true, completion: nil)
                     }
-                    dispatchGroup.leave()
+                    self?.delegate?.mediaPickerManager(self!, didPickVideo: video.url)
+                    return
+                default:
+                    break
                 }
             }
-            dispatchGroup.notify(queue: .main) { [weak self] in
-                if !images.isEmpty {
-                    self?.delegate?.mediaPickerManager(self!, didPickImages: images)
-                }
+            DispatchQueue.main.async {
+                picker?.dismiss(animated: true, completion: nil)
             }
         }
-
-        // Handle video (pick first video only)
-        if let videoResult = videoResults.first {
-            videoResult.itemProvider.loadFileRepresentation(forTypeIdentifier: "public.movie") { url, error in
-                guard let url = url else { return }
-                // Copy to temp location to persist after picker is dismissed
-                let tempURL = FileManager.default.temporaryDirectory.appendingPathComponent(url.lastPathComponent)
-                try? FileManager.default.removeItem(at: tempURL)
-                do {
-                    try FileManager.default.copyItem(at: url, to: tempURL)
-                    DispatchQueue.main.async { [weak self] in
-                        self?.delegate?.mediaPickerManager(self!, didPickVideo: tempURL)
-                    }
-                } catch {
-                    // Failed to copy, do not call closure
-                }
-            }
+        DispatchQueue.main.async {
+            viewController.present(picker, animated: true, completion: nil)
         }
     }
 }

@@ -25,4 +25,12 @@ extension UIViewController {
         }
         return vc
     }
+    
+    func presentImageDetail(with image: UIImage) {
+        let imageDetailVC = ImageDetailViewController.instantiate(from: .createPost)
+        imageDetailVC.image = image
+        imageDetailVC.modalPresentationStyle = .overFullScreen
+        imageDetailVC.modalTransitionStyle = .crossDissolve
+        present(imageDetailVC, animated: true)
+    }
 }

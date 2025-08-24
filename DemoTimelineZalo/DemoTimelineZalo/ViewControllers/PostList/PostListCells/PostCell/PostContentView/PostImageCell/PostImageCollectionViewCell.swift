@@ -18,13 +18,15 @@ class PostImageCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        deleteButton.isHidden = true
         overlayView.isHidden = true
         backgroundColor = .black.withAlphaComponent(0.2)
     }
     
-    func configure(image: UIImage, index: Int, totalImages: Int) {
+    func configureSelected(image: UIImage, index: Int, totalImages: Int) {
         postImageView.image = image
-        let shouldShowOverlay = (index == 5) && (totalImages > 5)
+        deleteButton.isHidden = false
+        let shouldShowOverlay = (index + 1 == 5) && (totalImages > 5)
         overlayView.isHidden = !shouldShowOverlay
         numberImageLabel.text = shouldShowOverlay ? "+\(totalImages - 5)" : nil
     }

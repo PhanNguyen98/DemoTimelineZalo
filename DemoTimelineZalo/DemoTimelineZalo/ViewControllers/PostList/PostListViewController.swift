@@ -9,6 +9,11 @@ import UIKit
 
 class PostListViewController: BaseViewController {
     
+    private enum PostListSection: Int, CaseIterable {
+        case createPost = 0
+        case postList
+    }
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchView: UIStackView!
     

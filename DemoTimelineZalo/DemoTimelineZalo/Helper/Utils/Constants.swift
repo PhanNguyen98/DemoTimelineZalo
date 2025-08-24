@@ -37,7 +37,8 @@ enum PostMedia: Int, CaseIterable {
     }
 }
 
-enum PostListSection: Int, CaseIterable {
-    case createPost = 0
-    case postList
+enum ScreenSize {
+    static let width  = UIScreen.main.bounds.width
+    static let height = UIScreen.main.bounds.height
+    static let bounds = UIScreen.main.bounds
 }

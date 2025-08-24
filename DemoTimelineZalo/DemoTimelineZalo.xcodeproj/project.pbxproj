@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		04D0C2DBE77D99C70EB64924 /* Pods_DemoTimelineZalo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D34AD68EF885618B218E439 /* Pods_DemoTimelineZalo.framework */; };
 		311042542E58717400C8E858 /* SampleVideo_1280x720_5mb.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 311042532E58717400C8E858 /* SampleVideo_1280x720_5mb.mp4 */; };
+		311EA3132E5AE6A800524BC1 /* ImageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311EA3122E5AE6A800524BC1 /* ImageDetailViewController.swift */; };
 		312B4AFA2E56C14A00B4BEA3 /* PostDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312B4AF92E56C14A00B4BEA3 /* PostDataManager.swift */; };
 		312B4B002E56C1D800B4BEA3 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312B4AFF2E56C1D800B4BEA3 /* LoadingView.swift */; };
 		312B4B062E56C2A400B4BEA3 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312B4B052E56C2A400B4BEA3 /* BaseViewController.swift */; };
@@ -39,6 +40,10 @@
 		314499182E5703E90037CCAA /* SFProDisplay-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 314499142E5703E90037CCAA /* SFProDisplay-Semibold.ttf */; };
 		314499192E5703E90037CCAA /* SFProDisplay-Heavy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 314499112E5703E90037CCAA /* SFProDisplay-Heavy.ttf */; };
 		3144991C2E570AA40037CCAA /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3144991B2E570AA40037CCAA /* GradientView.swift */; };
+		318545132E5B4C1700373618 /* VideoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318545122E5B4C1700373618 /* VideoDetailViewController.swift */; };
+		31887E762E5AEA9E0084BCC0 /* SelectedImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31887E752E5AEA9E0084BCC0 /* SelectedImagesViewController.swift */; };
+		31887E7D2E5AF0400084BCC0 /* AddImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31887E7C2E5AF0400084BCC0 /* AddImageCollectionViewCell.xib */; };
+		31887E7E2E5AF0400084BCC0 /* AddImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31887E7B2E5AF0400084BCC0 /* AddImageCollectionViewCell.swift */; };
 		319F238A2E580DE8004C691E /* PostImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 319F23892E580DE8004C691E /* PostImageCollectionViewCell.xib */; };
 		319F238B2E580DE8004C691E /* PostImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319F23882E580DE8004C691E /* PostImageCollectionViewCell.swift */; };
 		319F238D2E581B03004C691E /* PostImageLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319F238C2E581B03004C691E /* PostImageLayout.swift */; };
@@ -69,6 +74,7 @@
 
 /* Begin PBXFileReference section */
 		311042532E58717400C8E858 /* SampleVideo_1280x720_5mb.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = SampleVideo_1280x720_5mb.mp4; sourceTree = "<group>"; };
+		311EA3122E5AE6A800524BC1 /* ImageDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetailViewController.swift; sourceTree = "<group>"; };
 		312B4AF92E56C14A00B4BEA3 /* PostDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDataManager.swift; sourceTree = "<group>"; };
 		312B4AFF2E56C1D800B4BEA3 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		312B4B052E56C2A400B4BEA3 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -99,6 +105,10 @@
 		314499132E5703E90037CCAA /* SFProDisplay-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Regular.ttf"; sourceTree = "<group>"; };
 		314499142E5703E90037CCAA /* SFProDisplay-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Semibold.ttf"; sourceTree = "<group>"; };
 		3144991B2E570AA40037CCAA /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		318545122E5B4C1700373618 /* VideoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoDetailViewController.swift; sourceTree = "<group>"; };
+		31887E752E5AEA9E0084BCC0 /* SelectedImagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedImagesViewController.swift; sourceTree = "<group>"; };
+		31887E7B2E5AF0400084BCC0 /* AddImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		31887E7C2E5AF0400084BCC0 /* AddImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddImageCollectionViewCell.xib; sourceTree = "<group>"; };
 		319F23882E580DE8004C691E /* PostImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		319F23892E580DE8004C691E /* PostImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostImageCollectionViewCell.xib; sourceTree = "<group>"; };
 		319F238C2E581B03004C691E /* PostImageLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImageLayout.swift; sourceTree = "<group>"; };
@@ -291,8 +301,10 @@
 		312B4B172E56C51400B4BEA3 /* CreatePost */ = {
 			isa = PBXGroup;
 			children = (
-				3162E3F22E596A58008D2E94 /* CreatePostView */,
-				312B4B1C2E56C62300B4BEA3 /* CreatePostViewController.swift */,
+				318545112E5B4BF700373618 /* VideoDetailVC */,
+				31887E792E5AF0170084BCC0 /* ImageDetailVC */,
+				31887E782E5AF0090084BCC0 /* SelectedImagesVC */,
+				31887E772E5AEFF40084BCC0 /* CreatePostVC */,
 			);
 			path = CreatePost;
 			sourceTree = "<group>";
@@ -344,6 +356,49 @@
 				31EBABB12E59A6AD00FA2DC5 /* CreatePostView.swift */,
 			);
 			path = CreatePostView;
+			sourceTree = "<group>";
+		};
+		318545112E5B4BF700373618 /* VideoDetailVC */ = {
+			isa = PBXGroup;
+			children = (
+				318545122E5B4C1700373618 /* VideoDetailViewController.swift */,
+			);
+			path = VideoDetailVC;
+			sourceTree = "<group>";
+		};
+		31887E772E5AEFF40084BCC0 /* CreatePostVC */ = {
+			isa = PBXGroup;
+			children = (
+				3162E3F22E596A58008D2E94 /* CreatePostView */,
+				312B4B1C2E56C62300B4BEA3 /* CreatePostViewController.swift */,
+			);
+			path = CreatePostVC;
+			sourceTree = "<group>";
+		};
+		31887E782E5AF0090084BCC0 /* SelectedImagesVC */ = {
+			isa = PBXGroup;
+			children = (
+				31887E7A2E5AF0250084BCC0 /* Cells */,
+				31887E752E5AEA9E0084BCC0 /* SelectedImagesViewController.swift */,
+			);
+			path = SelectedImagesVC;
+			sourceTree = "<group>";
+		};
+		31887E792E5AF0170084BCC0 /* ImageDetailVC */ = {
+			isa = PBXGroup;
+			children = (
+				311EA3122E5AE6A800524BC1 /* ImageDetailViewController.swift */,
+			);
+			path = ImageDetailVC;
+			sourceTree = "<group>";
+		};
+		31887E7A2E5AF0250084BCC0 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				31887E7B2E5AF0400084BCC0 /* AddImageCollectionViewCell.swift */,
+				31887E7C2E5AF0400084BCC0 /* AddImageCollectionViewCell.xib */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		319F23872E580DBA004C691E /* PostImageCell */ = {
@@ -599,6 +654,7 @@
 				312B4B2D2E56C7D000B4BEA3 /* SplashViewController.xib in Resources */,
 				312B4B252E56C67700B4BEA3 /* CreatePost.storyboard in Resources */,
 				31D50F1E2E55A83800E8FBFB /* LaunchScreen.storyboard in Resources */,
+				31887E7D2E5AF0400084BCC0 /* AddImageCollectionViewCell.xib in Resources */,
 				319F23922E5824BF004C691E /* PostMediaCollectionViewCell.xib in Resources */,
 				319FAF7B2E571880006012FE /* PostHeaderView.xib in Resources */,
 				312B4B272E56C68400B4BEA3 /* PostDetail.storyboard in Resources */,
@@ -661,6 +717,7 @@
 				31EBABB02E59A2B800FA2DC5 /* DiaryToolbarView.swift in Sources */,
 				319F23932E5824BF004C691E /* PostMediaCollectionViewCell.swift in Sources */,
 				312B4B342E56C97C00B4BEA3 /* UIViewController+Extensions.swift in Sources */,
+				311EA3132E5AE6A800524BC1 /* ImageDetailViewController.swift in Sources */,
 				31BB25952E58A2AD009BD971 /* BasePostContentView.swift in Sources */,
 				312B4B302E56C8F000B4BEA3 /* UIView+Extensions.swift in Sources */,
 				319F238F2E58209B004C691E /* UserPostTableViewCell.swift in Sources */,
@@ -669,6 +726,7 @@
 				31DAAAB42E570EA30073D8E4 /* CreatePostTableViewCell.swift in Sources */,
 				312B4B3A2E56CA0700B4BEA3 /* Date+Extensions.swift in Sources */,
 				319FAF792E571863006012FE /* PostHeaderView.swift in Sources */,
+				31887E7E2E5AF0400084BCC0 /* AddImageCollectionViewCell.swift in Sources */,
 				312B4B362E56C9C000B4BEA3 /* UITableView+Extensions.swift in Sources */,
 				31D50F192E55A83800E8FBFB /* AppDelegate.swift in Sources */,
 				312B4B082E56C2AC00B4BEA3 /* BaseViewXIB.swift in Sources */,
@@ -682,6 +740,7 @@
 				312B4B382E56C9E400B4BEA3 /* UICollectionView+Extensions.swift in Sources */,
 				312B4B1B2E56C61600B4BEA3 /* PostListViewController.swift in Sources */,
 				312B4B062E56C2A400B4BEA3 /* BaseViewController.swift in Sources */,
+				31887E762E5AEA9E0084BCC0 /* SelectedImagesViewController.swift in Sources */,
 				3144991C2E570AA40037CCAA /* GradientView.swift in Sources */,
 				31EBABB22E59A6AD00FA2DC5 /* CreatePostView.swift in Sources */,
 				312B4AFA2E56C14A00B4BEA3 /* PostDataManager.swift in Sources */,
@@ -698,6 +757,7 @@
 				3144990F2E5700620037CCAA /* CoreDataManager.swift in Sources */,
 				31BB25972E58A33E009BD971 /* ImagePostContentView.swift in Sources */,
 				312B4B3C2E56CD5200B4BEA3 /* Constants.swift in Sources */,
+				318545132E5B4C1700373618 /* VideoDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -727,6 +787,9 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DemoTimelineZalo/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
@@ -758,6 +821,9 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DemoTimelineZalo/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;

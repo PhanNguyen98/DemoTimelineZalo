@@ -15,9 +15,16 @@ class CreatePostViewController: BaseViewController {
     private let createPostView = CreatePostView()
     let mediaPickerManager = MediaPickerManager()
     
+    private let maxVisibleImages = 5
+    
     var dataImages: [UIImage] = [] {
         didSet {
-            createPostView.imageView.isHidden = dataImages.isEmpty
+            updateImagesUI()
+        }
+    }
+    var videoURL: URL? {
+        didSet {
+            updateVideoUI()
         }
     }
         
@@ -29,6 +36,8 @@ class CreatePostViewController: BaseViewController {
     }
     
     private func setupUI() {
+        videoURL = nil
+        
         contentView.addSubview(createPostView)
         contentView.addSubview(createPostView.toolbar)
         
@@ -49,6 +58,7 @@ class CreatePostViewController: BaseViewController {
         
         mediaPickerManager.delegate = self
         createPostView.imageView.delegate = self
+        createPostView.videoView.delegate = self
     }
     
     private func setupActions() {
@@ -83,29 +93,83 @@ class CreatePostViewController: BaseViewController {
     @IBAction func onPressSend(_ sender: Any) {
     }
     
+    private func updateImagesUI() {
+        createPostView.imageView.isHidden = dataImages.isEmpty
+        createPostView.toolbar.setVideoButtonDisabled(!dataImages.isEmpty)
+        createPostView.imageView.configure(images: dataImages)
+    }
+    
+    private func updateVideoUI() {
+        createPostView.videoView.isHidden = (videoURL == nil)
+        createPostView.videoView.videoURL = videoURL
+        createPostView.toolbar.setImageButtonDisabled(videoURL != nil)
+    }
 }
 
 // MARK: MediaPickerManagerDelegate
 extension CreatePostViewController: MediaPickerManagerDelegate {
     func mediaPickerManager(_ manager: MediaPickerManager, didPickImages images: [UIImage]) {
-        dataImages = images
-        createPostView.imageView.configure(images: images)
+        DispatchQueue.main.async {
+            self.dataImages += images
+            self.updateImagesUI()
+        }
     }
     
     func mediaPickerManager(_ manager: MediaPickerManager, didPickVideo url: URL) {
-        
+        DispatchQueue.main.async {
+            self.videoURL = url
+        }
     }
 }
 
 // MARK: SelectedImagesViewDelegate
 extension CreatePostViewController: SelectedImagesViewDelegate {
+    func selectedImagesView(_ view: SelectedImagesView, didSelectImage image: UIImage, at index: Int) {
+        if index == maxVisibleImages - 1 && dataImages.count > maxVisibleImages {
+            let selectedImagesVC = SelectedImagesViewController.instantiate(from: .createPost)
+            selectedImagesVC.dataImages = dataImages
+            selectedImagesVC.delegate = self
+            selectedImagesVC.modalPresentationStyle = .overFullScreen
+            present(selectedImagesVC, animated: true)
+        } else {
+            presentImageDetail(with: image)
+        }
+    }
+    
     func selectedImagesViewDidTapAddImage(_ view: SelectedImagesView) {
         mediaPickerManager.presentImagePicker(from: self)
         createPostView.toolbar.setImageButtonSelected(true)
     }
     
     func selectedImagesView(_ view: SelectedImagesView, didDeleteImageAt index: Int) {
-        dataImages.remove(at: index)
+        DispatchQueue.main.async {
+            self.dataImages.remove(at: index)
+        }
     }
 }
 
+// MARK: SelectedImagesViewControllerDelegate
+extension CreatePostViewController: SelectedImagesViewControllerDelegate {
+    func selectedImagesViewController(_ controller: SelectedImagesViewController, didSelectImages images: [UIImage]) {
+        DispatchQueue.main.async {
+            self.dataImages = images
+        }
+    }
+}
+
+// MARK: SelectedVideoViewDelegate
+extension CreatePostViewController: SelectedVideoViewDelegate {
+    func selectedVideoViewDidTapPlay(_ view: SelectedVideoView) {
+        let videoDetailVC = VideoDetailViewController.instantiate(from: .createPost)
+        videoDetailVC.videoURL = videoURL
+        videoDetailVC.modalPresentationStyle = .overFullScreen
+        videoDetailVC.modalTransitionStyle = .crossDissolve
+        present(videoDetailVC, animated: true)
+    }
+    
+    func selectedVideoViewDidTapDelete(_ view: SelectedVideoView) {
+        DispatchQueue.main.async {
+            self.videoURL = nil
+        }
+    }
+}

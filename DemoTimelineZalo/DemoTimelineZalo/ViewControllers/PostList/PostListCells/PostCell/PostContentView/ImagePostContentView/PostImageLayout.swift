@@ -9,7 +9,7 @@ import UIKit
 
 class PostImageLayout: UICollectionViewLayout {
     private enum LayoutConstants {
-        static let height1Item: CGFloat = 450
+        static let height1Item: CGFloat = 500
         static let height2Items: CGFloat = 400
         static let height3Items: CGFloat = 350
         static let height4or5Items: CGFloat = 450
@@ -64,6 +64,8 @@ class PostImageLayout: UICollectionViewLayout {
     
     static func heightForItemCount(_ count: Int) -> CGFloat {
         switch count {
+        case 0:
+            return 0
         case 1:
             return LayoutConstants.height1Item
         case 2:
@@ -73,7 +75,7 @@ class PostImageLayout: UICollectionViewLayout {
         case 4, 5:
             return LayoutConstants.height4or5Items
         default:
-            return 0
+            return LayoutConstants.height4or5Items
         }
     }
     

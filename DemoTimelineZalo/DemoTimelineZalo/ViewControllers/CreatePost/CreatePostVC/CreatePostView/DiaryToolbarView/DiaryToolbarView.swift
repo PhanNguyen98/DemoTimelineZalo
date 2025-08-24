@@ -83,6 +83,14 @@ class DiaryToolbarView: UIView {
         styleButton(videoButton, selected: false)
     }
     
+    func setVideoButtonDisabled(_ disabled: Bool) {
+        videoButton.isEnabled = !disabled
+    }
+    
+    func setImageButtonDisabled(_ disabled: Bool) {
+        imageButton.isEnabled = !disabled
+    }
+    
     @objc private func imageButtonTapped() {
         onImageButtonTapped?()
     }
