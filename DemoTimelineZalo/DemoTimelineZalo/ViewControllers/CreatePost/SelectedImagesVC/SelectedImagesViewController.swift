@@ -98,7 +98,7 @@ extension SelectedImagesViewController: UICollectionViewDelegate, UICollectionVi
         let row = indexPath.row
         switch SelectedImagesSection.allCases[section] {
         case .images:
-            presentImageDetail(with: dataImages[row])
+            AppRouter.presentImageDetail(from: self, with: dataImages[row])
         case .addImage:
             mediaPickerManager.presentImagePicker(from: self)
         }

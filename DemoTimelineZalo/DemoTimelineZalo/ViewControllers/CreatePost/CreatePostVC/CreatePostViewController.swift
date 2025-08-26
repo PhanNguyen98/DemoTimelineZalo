@@ -16,6 +16,7 @@ class CreatePostViewController: BaseViewController {
     let mediaPickerManager = MediaPickerManager()
     
     private let maxVisibleImages = 5
+    var entryMode: CreatePostEntryMode = .normal
     
     var dataImages: [UIImage] = [] {
         didSet {
@@ -27,12 +28,38 @@ class CreatePostViewController: BaseViewController {
             updateVideoUI()
         }
     }
+    var content: String = "" {
+        didSet {
+            updateContentUI()
+        }
+    }
         
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         setupUI()
         setupActions()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        handleEntryMode()
+    }
+
+    // MARK: Setup UI
+    private func handleEntryMode() {
+        switch entryMode {
+        case .normal:
+            break
+        case .imagePicker:
+            entryMode = .normal
+            mediaPickerManager.presentImagePicker(from: self)
+            createPostView.toolbar.setImageButtonSelected(true)
+        case .videoPicker:
+            entryMode = .normal
+            mediaPickerManager.presentVideoPicker(from: self)
+            createPostView.toolbar.setVideoButtonSelected(true)
+        }
     }
     
     private func setupUI() {
@@ -57,10 +84,30 @@ class CreatePostViewController: BaseViewController {
         ])
         
         mediaPickerManager.delegate = self
+        createPostView.textInputView.delegate = self
         createPostView.imageView.delegate = self
         createPostView.videoView.delegate = self
     }
     
+    private func updateImagesUI() {
+        createPostView.imageView.isHidden = dataImages.isEmpty
+        createPostView.toolbar.setVideoButtonDisabled(!dataImages.isEmpty)
+        createPostView.imageView.configure(images: dataImages)
+        sendButton.isEnabled = canCreatePost()
+    }
+    
+    private func updateVideoUI() {
+        createPostView.videoView.isHidden = (videoURL == nil)
+        createPostView.videoView.videoURL = videoURL
+        createPostView.toolbar.setImageButtonDisabled(videoURL != nil)
+        sendButton.isEnabled = canCreatePost()
+    }
+    
+    private func updateContentUI() {
+        sendButton.isEnabled = canCreatePost()
+    }
+    
+    // MARK: Setup Actions
     private func setupActions() {
         createPostView.toolbar.onImageButtonTapped = { [weak self] in
             guard let self = self else { return }
@@ -75,10 +122,18 @@ class CreatePostViewController: BaseViewController {
         }
     }
     
+    private func canCreatePost() -> Bool {
+        let hasText = !content.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+        let hasImages = !dataImages.isEmpty
+        let hasVideo = videoURL != nil
+        
+        return hasText || hasImages || hasVideo
+    }
+    
     override func keyboardWillShow(_ notification: Notification) {
         guard let info = notification.userInfo,
               let kbFrame = info[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
-        createPostView.toolbar.transform = CGAffineTransform(translationX: 0, y: -kbFrame.height + 30)
+        createPostView.toolbar.transform = CGAffineTransform(translationX: 0, y: -kbFrame.height + 35)
         createPostView.toolbar.setButtonNormal()
     }
     
@@ -91,18 +146,16 @@ class CreatePostViewController: BaseViewController {
     }
     
     @IBAction func onPressSend(_ sender: Any) {
-    }
-    
-    private func updateImagesUI() {
-        createPostView.imageView.isHidden = dataImages.isEmpty
-        createPostView.toolbar.setVideoButtonDisabled(!dataImages.isEmpty)
-        createPostView.imageView.configure(images: dataImages)
-    }
-    
-    private func updateVideoUI() {
-        createPostView.videoView.isHidden = (videoURL == nil)
-        createPostView.videoView.videoURL = videoURL
-        createPostView.toolbar.setImageButtonDisabled(videoURL != nil)
+        let postRepo = PostRepository()
+        let postManager = PostManager(postRepo: postRepo)
+        guard let user = UserManager.shared.getCurrentUser() else { return }
+        if let post = postManager.createPost(content: content, images: dataImages, video: videoURL, user: user) {
+            Task {
+                print(post)
+                NotificationCenter.default.post(name: .reloadDataPost, object: nil)
+                dismiss(animated: true)
+            }
+        }
     }
 }
 
@@ -126,13 +179,9 @@ extension CreatePostViewController: MediaPickerManagerDelegate {
 extension CreatePostViewController: SelectedImagesViewDelegate {
     func selectedImagesView(_ view: SelectedImagesView, didSelectImage image: UIImage, at index: Int) {
         if index == maxVisibleImages - 1 && dataImages.count > maxVisibleImages {
-            let selectedImagesVC = SelectedImagesViewController.instantiate(from: .createPost)
-            selectedImagesVC.dataImages = dataImages
-            selectedImagesVC.delegate = self
-            selectedImagesVC.modalPresentationStyle = .overFullScreen
-            present(selectedImagesVC, animated: true)
+            AppRouter.presentSelectedImages(from: self, dataImages: dataImages, delegate: self)
         } else {
-            presentImageDetail(with: image)
+            AppRouter.presentImageDetail(from: self, with: image)
         }
     }
     
@@ -160,16 +209,20 @@ extension CreatePostViewController: SelectedImagesViewControllerDelegate {
 // MARK: SelectedVideoViewDelegate
 extension CreatePostViewController: SelectedVideoViewDelegate {
     func selectedVideoViewDidTapPlay(_ view: SelectedVideoView) {
-        let videoDetailVC = VideoDetailViewController.instantiate(from: .createPost)
-        videoDetailVC.videoURL = videoURL
-        videoDetailVC.modalPresentationStyle = .overFullScreen
-        videoDetailVC.modalTransitionStyle = .crossDissolve
-        present(videoDetailVC, animated: true)
+        guard let videoURL = videoURL else { return }
+        AppRouter.presentVideoDetail(from: self, with: videoURL)
     }
     
     func selectedVideoViewDidTapDelete(_ view: SelectedVideoView) {
         DispatchQueue.main.async {
             self.videoURL = nil
         }
+    }
+}
+
+// MARK: TextInputViewDelegate
+extension CreatePostViewController: TextInputViewDelegate {
+    func textInputView(_ inputView: TextInputView, didChangeText text: String) {
+        self.content = text
     }
 }

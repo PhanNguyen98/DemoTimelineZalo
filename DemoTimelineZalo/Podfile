@@ -8,6 +8,8 @@ target 'DemoTimelineZalo' do
   # Pods for DemoTimelineZalo
   pod 'Kingfisher', '~> 8.0'
   pod 'YPImagePicker'
+  pod 'PanModal'
+  pod 'JXPhotoBrowser'
 
 end
 

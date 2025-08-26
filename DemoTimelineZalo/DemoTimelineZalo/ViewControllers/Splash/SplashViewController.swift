@@ -12,6 +12,7 @@ class SplashViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         gotoPostList()
+        UserManager.shared.loadUser()
     }
 
     func gotoPostList() {

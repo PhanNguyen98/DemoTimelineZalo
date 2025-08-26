@@ -42,3 +42,34 @@ enum ScreenSize {
     static let height = UIScreen.main.bounds.height
     static let bounds = UIScreen.main.bounds
 }
+
+enum CreatePostEntryMode {
+    case normal
+    case imagePicker
+    case videoPicker
+}
+
+enum OptionType: Int, CaseIterable {
+    case deletePost = 0
+    
+    var icon: UIImage? {
+        switch self {
+        case .deletePost:
+            return UIImage(systemName: "trash")?.withTintColor(.colorACAFB2, renderingMode: .alwaysOriginal)
+        }
+    }
+    
+    var title: String {
+        switch self {
+        case .deletePost:
+            return "Xóa bài đăng"
+        }
+    }
+    
+    var subTitle: String? {
+        switch self {
+        case .deletePost:
+            return "Bài đăng này sẽ ẩn khỏi nhật ký"
+        }
+    }
+}

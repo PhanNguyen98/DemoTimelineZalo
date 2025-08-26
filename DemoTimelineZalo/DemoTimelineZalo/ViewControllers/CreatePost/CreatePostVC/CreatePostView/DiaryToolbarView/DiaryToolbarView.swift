@@ -38,6 +38,7 @@ class DiaryToolbarView: UIView {
     required init?(coder: NSCoder) { super.init(coder: coder); setupUI() }
     
     private func setupUI() {
+        backgroundColor = .white
         topBorder.backgroundColor = UIColor.colorACAFB2.cgColor
         layer.addSublayer(topBorder)
         

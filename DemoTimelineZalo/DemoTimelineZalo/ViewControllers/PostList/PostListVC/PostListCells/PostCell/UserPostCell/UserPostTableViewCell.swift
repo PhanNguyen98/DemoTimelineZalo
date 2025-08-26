@@ -17,14 +17,12 @@ class UserPostTableViewCell: BasePostTableViewCell {
     
     private let imageContentView: ImagePostContentView = {
         let view = ImagePostContentView()
-        view.isHidden = true
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private let videoContentView: VideoPostContentView = {
         let view = VideoPostContentView()
-        view.isHidden = true
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -54,8 +52,41 @@ class UserPostTableViewCell: BasePostTableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func configure() {
-        imageContentView.isHidden = false
-        imageContentView.configure()
+    func configure(post: PostModel,
+                   imageDelegate: ImagePostContentViewDelegate?,
+                   videoDelegate: VideoPostContentViewDelegate?) {
+        let hasVideo = post.video != nil
+        videoContentView.isHidden = !hasVideo
+        imageContentView.isHidden = hasVideo
+        
+        if let video = post.video {
+            videoContentView.delegate = videoDelegate
+            videoContentView.configure(video: video)
+            videoContentView.configureContent(text: post.content)
+        } else {
+            imageContentView.delegate = imageDelegate
+            imageContentView.configure(post: post)
+        }
+    }
+    
+    func configureWillDisplay(post: PostModel) {
+        let hasVideo = post.video != nil
+        
+        if hasVideo {
+            videoContentView.playVideo()
+        }
+    }
+    
+    func configureEndDisplay(post: PostModel) {
+        let hasVideo = post.video != nil
+        
+        if hasVideo {
+            videoContentView.pauseVideo()
+        }
+    }
+    
+    func configureHeader(post: PostModel, delegate: PostHeaderViewDelegate) {
+        headerView.delegate = delegate
+        headerView.configure(post: post)
     }
 }

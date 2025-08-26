@@ -34,27 +34,27 @@ class MediaPickerManager: NSObject {
         config.library.preselectedItems = previouslySelectedItems
         config.library.itemOverlayType = .none
 
-        let picker = YPImagePicker(configuration: config)
-        picker.didFinishPicking { [weak self, weak picker] items, _ in
-            let photoItems = items.filter {
-                if case .photo = $0 { return true }
-                return false
-            }
-            self?.previouslySelectedItems = photoItems
-            var images: [UIImage] = []
-            for item in photoItems {
-                if case .photo(let photo) = item {
-                    images.append(photo.image)
+        DispatchQueue.main.async {
+            let picker = YPImagePicker(configuration: config)
+            picker.didFinishPicking { [weak self, weak picker] items, _ in
+                let photoItems = items.filter {
+                    if case .photo = $0 { return true }
+                    return false
+                }
+                self?.previouslySelectedItems = photoItems
+                var images: [UIImage] = []
+                for item in photoItems {
+                    if case .photo(let photo) = item {
+                        images.append(photo.image)
+                    }
+                }
+                DispatchQueue.main.async {
+                    picker?.dismiss(animated: true, completion: nil)
+                }
+                if !images.isEmpty {
+                    self?.delegate?.mediaPickerManager(self!, didPickImages: images)
                 }
             }
-            DispatchQueue.main.async {
-                picker?.dismiss(animated: true, completion: nil)
-            }
-            if !images.isEmpty {
-                self?.delegate?.mediaPickerManager(self!, didPickImages: images)
-            }
-        }
-        DispatchQueue.main.async {
             viewController.present(picker, animated: true, completion: nil)
         }
     }
@@ -74,25 +74,25 @@ class MediaPickerManager: NSObject {
         config.video.compression = AVAssetExportPresetHighestQuality
         config.video.fileType = .mp4
 
-        let picker = YPImagePicker(configuration: config)
-        picker.didFinishPicking { [weak self, weak picker] items, _ in
-            for item in items {
-                switch item {
-                case .video(let video):
-                    DispatchQueue.main.async {
-                        picker?.dismiss(animated: true, completion: nil)
+        DispatchQueue.main.async {
+            let picker = YPImagePicker(configuration: config)
+            picker.didFinishPicking { [weak self, weak picker] items, _ in
+                for item in items {
+                    switch item {
+                    case .video(let video):
+                        DispatchQueue.main.async {
+                            picker?.dismiss(animated: true, completion: nil)
+                        }
+                        self?.delegate?.mediaPickerManager(self!, didPickVideo: video.url)
+                        return
+                    default:
+                        break
                     }
-                    self?.delegate?.mediaPickerManager(self!, didPickVideo: video.url)
-                    return
-                default:
-                    break
+                }
+                DispatchQueue.main.async {
+                    picker?.dismiss(animated: true, completion: nil)
                 }
             }
-            DispatchQueue.main.async {
-                picker?.dismiss(animated: true, completion: nil)
-            }
-        }
-        DispatchQueue.main.async {
             viewController.present(picker, animated: true, completion: nil)
         }
     }

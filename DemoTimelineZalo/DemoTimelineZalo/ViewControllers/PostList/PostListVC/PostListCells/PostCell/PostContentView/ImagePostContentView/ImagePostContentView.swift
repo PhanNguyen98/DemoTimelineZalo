@@ -6,6 +6,11 @@
 //
 
 import UIKit
+import JXPhotoBrowser
+
+protocol ImagePostContentViewDelegate: AnyObject {
+    func imagePostContentView(_ view: ImagePostContentView, didSelectImageAt index: Int, image: ImageModel, post: PostModel)
+}
 
 class ImagePostContentView: BasePostContentView {
     
@@ -30,9 +35,11 @@ class ImagePostContentView: BasePostContentView {
         return collectionView
     }()
     
-    private var currentPost: Post?
+    private var currentPost: PostModel?
     private var mediaCollectionHeightConstraint: NSLayoutConstraint?
-    private var countImage: Int = 5
+    private var dataImage: [ImageModel] = []
+    
+    weak var delegate: ImagePostContentViewDelegate?
     
     // MARK: - Setup
     override func setupUI() {
@@ -58,17 +65,40 @@ class ImagePostContentView: BasePostContentView {
     }
     
     // MARK: - Configure
-    func configure() {
-        configureContent(text: "Hello, World!")
-        
-        mediaCollectionHeightConstraint?.constant = PostImageLayout.heightForItemCount(countImage)
+    func configure(post: PostModel) {
+        currentPost = post
+        configureContent(text: post.content)
+        mediaCollectionHeightConstraint?.constant = PostImageLayout.heightForItemCount(currentPost?.images?.count ?? 0)
+        mediaCollectionView.reloadData()
     }
 }
 
 // MARK: - UICollectionViewDelegate
 extension ImagePostContentView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //
+        guard let images = currentPost?.images, let post = currentPost else { return }
+        let selectedImage = images[indexPath.row]
+        delegate?.imagePostContentView(self, didSelectImageAt: indexPath.row, image: selectedImage, post: post)
+        
+        guard let images = post.images else { return }
+        let browser = JXPhotoBrowser()
+        browser.numberOfItems = {
+            images.count
+        }
+        browser.reloadCellAtIndex = { context in
+            let url = images[context.index].path.flatMap { URL(fileURLWithPath: $0) }
+            let browserCell = context.cell as? JXPhotoBrowserImageCell
+            guard let imageView = browserCell?.imageView else { return }
+            MediaFileManager.loadImage(from: url, into: imageView)
+        }
+        browser.transitionAnimator = JXPhotoBrowserZoomAnimator(previousView: { index -> UIView? in
+            let path = IndexPath(item: index, section: indexPath.section)
+            let cell = collectionView.cellForItem(at: path) as? PostImageCollectionViewCell
+            return cell?.postImageView
+        })
+        browser.pageIndicator = JXPhotoBrowserNumberPageIndicator()
+        browser.pageIndex = indexPath.item
+        browser.show()
     }
 }
 
@@ -79,16 +109,18 @@ extension ImagePostContentView: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        guard let images = currentPost?.images else { return 0 }
-//        if images.count > 5 {
-//            return 5
-//        }
-//        return images.count
-        return countImage
+        guard let images = currentPost?.images else { return 0 }
+        if images.count > 5 {
+            return 5
+        }
+        return images.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: PostImageCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
+        let row = indexPath.row
+        guard let images = currentPost?.images else { return cell }
+        cell.configureImage(image: images[row], index: row, totalImages: images.count)
         return cell
     }
 }

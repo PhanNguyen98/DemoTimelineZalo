@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol TextInputViewDelegate: AnyObject {
+    func textInputView(_ inputView: TextInputView, didChangeText text: String)
+}
+
 class TextInputView: UIView, UITextViewDelegate {
     let textView: UITextView = {
         let textView = UITextView()
@@ -27,6 +31,7 @@ class TextInputView: UIView, UITextViewDelegate {
     }()
 
     var heightChanged: ((CGFloat) -> Void)?
+    weak var delegate: TextInputViewDelegate?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -56,5 +61,6 @@ class TextInputView: UIView, UITextViewDelegate {
         let size = textView.sizeThatFits(CGSize(width: textView.frame.width, height: CGFloat.greatestFiniteMagnitude))
         heightChanged?(size.height)
         placeholderLabel.isHidden = !textView.text.isEmpty
+        delegate?.textInputView(self, didChangeText: textView.text)
     }
 }

@@ -31,6 +31,13 @@ class PostImageCollectionViewCell: UICollectionViewCell {
         numberImageLabel.text = shouldShowOverlay ? "+\(totalImages - 5)" : nil
     }
     
+    func configureImage(image: ImageModel, index: Int, totalImages: Int) {
+        MediaFileManager.loadImage(from: URL(fileURLWithPath: image.path ?? ""), into: postImageView)
+        let shouldShowOverlay = (index + 1 == 5) && (totalImages > 5)
+        overlayView.isHidden = !shouldShowOverlay
+        numberImageLabel.text = shouldShowOverlay ? "+\(totalImages - 5)" : nil
+    }
+    
     @IBAction func onPressDelete(_ sender: Any) {
         onDeleteTapped()
     }
