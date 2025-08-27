@@ -34,10 +34,40 @@ class PostRepository {
         }
     }
     
+    // MARK: - Get Post
+    func getPost(postModel: PostModel) -> PostModel? {
+        let request: NSFetchRequest<Post> = Post.fetchRequest()
+        request.predicate = NSPredicate(format: "id == %@", postModel.id as CVarArg)
+        do {
+            if let post = try context.fetch(request).first {
+                return post.toModel()
+            }
+        } catch {
+            print("❌ Get post error: \(error)")
+            return nil
+        }
+        return nil
+    }
+    
     // MARK: - Update Post
-    func updatePost(postModel: PostModel) {
-        let _ = postModel.toEntity(context: context)
-        saveContext()
+    func updatePost(postModel: PostModel) -> Bool {
+        let request: NSFetchRequest<Post> = Post.fetchRequest()
+        request.predicate = NSPredicate(format: "id == %@", postModel.id as CVarArg)
+        do {
+            if let post = try context.fetch(request).first {
+                post.content = postModel.content
+                post.video = postModel.video?.toEntity(context: context)
+                if let images = postModel.images?.map({ $0.toEntity(context: context) }) {
+                    post.images = NSSet(array: images)
+                }
+                saveContext()
+                return true
+            }
+        } catch {
+            print("❌ Update error: \(error)")
+            return false
+        }
+        return false
     }
     
     // MARK: - Delete Post

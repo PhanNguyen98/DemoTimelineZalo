@@ -5,14 +5,20 @@
 //  Created by NguyenPhan on 26/8/25.
 //
 
+
 import UIKit
 import PanModal
+
+protocol OptionsViewControllerDelegate: AnyObject {
+    func optionsViewControllerDidSelectEdit(_ viewController: OptionsViewController, post: PostModel)
+}
 
 class OptionsViewController: UIViewController {
     
     private let tableView = UITableView(frame: .zero, style: .plain)
     
     var post: PostModel?
+    weak var delegate: OptionsViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,6 +67,11 @@ extension OptionsViewController: UITableViewDelegate, UITableViewDataSource {
                     NotificationCenter.default.post(name: .reloadDataPost, object: nil)
                     dismiss(animated: true)
                 }
+            }
+        case .editPost:
+            guard let post = self.post else { return }
+            dismiss(animated: true) {
+                self.delegate?.optionsViewControllerDidSelectEdit(self, post: post)
             }
         }
     }

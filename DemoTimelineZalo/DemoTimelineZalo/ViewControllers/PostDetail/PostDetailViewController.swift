@@ -7,6 +7,7 @@
 
 import UIKit
 
+// MARK: - PostDetailViewController
 class PostDetailViewController: BaseViewController {
     
     private let navigationView: CustomNavigationView = {
@@ -35,12 +36,15 @@ class PostDetailViewController: BaseViewController {
     
     var post: PostModel?
     
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
         setupData()
+        setupNotification()
     }
     
+    // MARK: - Setup Layout
     private func setupLayout() {
         view.backgroundColor = .white
         
@@ -82,6 +86,17 @@ class PostDetailViewController: BaseViewController {
         navigationView.delegate = self
     }
     
+    func setupNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(self.updateData), name: .reloadDataPost, object: nil)
+    }
+    
+    // MARK: - Setup Data
+    @objc func updateData() {
+        guard let post = post, let newPost = PostManager().getPost(post: post) else { return }
+        self.post = newPost
+        setupData()
+    }
+    
     func setupData() {
         guard let post = post else { return }
         let hasVideo = post.video != nil
@@ -100,6 +115,7 @@ class PostDetailViewController: BaseViewController {
         headerView.setHiddenMoreButton(true)
     }
     
+    // MARK: - Video Handling
     func playVideoIfExists() {
         videoContentView.playVideo()
     }
@@ -112,10 +128,11 @@ class PostDetailViewController: BaseViewController {
         let offsetY = scrollView.contentOffset.y
         if offsetY <= 0 {
             videoContentView.muteVideo(true)
-        } 
+        }
     }
 }
 
+// MARK: - VideoPostContentViewDelegate
 extension PostDetailViewController: VideoPostContentViewDelegate {
     func videoPostContentViewDidTap(_ view: VideoPostContentView, video: VideoModel) {
         pauseVideoIfExists()
@@ -123,14 +140,29 @@ extension PostDetailViewController: VideoPostContentViewDelegate {
     }
 }
 
+// MARK: - CustomNavigationViewDelegate
 extension PostDetailViewController: CustomNavigationViewDelegate {
+    func navigationViewDidTapMore(_ navigationView: CustomNavigationView) {
+        guard let post = post else { return }
+        AppRouter.presentOptionsMenu(from: self, post: post, delegate: self)
+    }
+    
     func navigationViewDidTapBack(_ navigationView: CustomNavigationView) {
         pop()
     }
 }
 
+// MARK: - UIScrollViewDelegate
 extension PostDetailViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         muteVideoIfNeeded(whileScrolling: scrollView)
+    }
+}
+
+// MARK: - OptionsViewControllerDelegate
+extension PostDetailViewController: OptionsViewControllerDelegate {
+    func optionsViewControllerDidSelectEdit(_ viewController: OptionsViewController, post: PostModel) {
+        pauseVideoIfExists()
+        AppRouter.presentEditPostVC(from: self, post: post)
     }
 }

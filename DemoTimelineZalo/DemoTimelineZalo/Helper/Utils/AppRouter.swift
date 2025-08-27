@@ -17,9 +17,17 @@ struct AppRouter {
         vc.present(imageDetailVC, animated: true)
     }
     
-    static func presentCreatePostVC(from vc: UIViewController, entryMode: CreatePostEntryMode = .normal) {
+    static func presentCreatePostVC(from vc: UIViewController, entryMode: CreatePostEntryMode = .normal, animated: Bool = true) {
         let createPostVC = CreatePostViewController.instantiate(from: .createPost)
         createPostVC.entryMode = entryMode
+        createPostVC.modalPresentationStyle = .overFullScreen
+        createPostVC.modalTransitionStyle = .crossDissolve
+        vc.present(createPostVC, animated: animated)
+    }
+    
+    static func presentEditPostVC(from vc: UIViewController, post: PostModel) {
+        let createPostVC = CreatePostViewController.instantiate(from: .createPost)
+        createPostVC.editingPost = post
         createPostVC.modalPresentationStyle = .overFullScreen
         vc.present(createPostVC, animated: true)
     }
@@ -40,9 +48,10 @@ struct AppRouter {
         vc.present(selectedImagesVC, animated: true)
     }
     
-    static func presentOptionsMenu(from vc: UIViewController, post: PostModel) {
+    static func presentOptionsMenu(from vc: UIViewController, post: PostModel, delegate: OptionsViewControllerDelegate?) {
         let optionVC = OptionsViewController()
         optionVC.post = post
+        optionVC.delegate = delegate
         vc.presentPanModal(optionVC)
     }
     

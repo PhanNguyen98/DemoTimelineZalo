@@ -17,6 +17,7 @@ class CreatePostViewController: BaseViewController {
     
     private let maxVisibleImages = 5
     var entryMode: CreatePostEntryMode = .normal
+    var editingPost: PostModel?
     
     var dataImages: [UIImage] = [] {
         didSet {
@@ -39,6 +40,19 @@ class CreatePostViewController: BaseViewController {
         view.backgroundColor = .systemBackground
         setupUI()
         setupActions()
+        if let post = editingPost {
+            content = post.content
+            post.images?.forEach { imageModel in
+                guard let image = imageModel.toUIImage() else { return }
+                dataImages.append(image)
+            }
+            if let path = post.video?.path {
+                videoURL = MediaFileManager.urlFromPath(path)
+            }
+            createPostView.textInputView.configure(text: content)
+            createPostView.imageView.configure(images: dataImages)
+            createPostView.videoView.videoURL = videoURL
+        }
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -149,9 +163,14 @@ class CreatePostViewController: BaseViewController {
         let postRepo = PostRepository()
         let postManager = PostManager(postRepo: postRepo)
         guard let user = UserManager.shared.getCurrentUser() else { return }
-        if let post = postManager.createPost(content: content, images: dataImages, video: videoURL, user: user) {
-            Task {
-                print(post)
+
+        if let post = editingPost {
+            if postManager.updatePost(postEdit: post, content: content, dataImages: dataImages, video: videoURL) {
+                NotificationCenter.default.post(name: .reloadDataPost, object: nil)
+                dismiss(animated: true)
+            }
+        } else {
+            if postManager.createPost(content: content, images: dataImages, video: videoURL, user: user) != nil {
                 NotificationCenter.default.post(name: .reloadDataPost, object: nil)
                 dismiss(animated: true)
             }

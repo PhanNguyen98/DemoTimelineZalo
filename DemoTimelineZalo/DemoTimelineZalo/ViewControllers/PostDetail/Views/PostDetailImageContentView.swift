@@ -85,7 +85,7 @@ extension PostDetailImageContentView: UICollectionViewDelegate {
             images.count
         }
         browser.reloadCellAtIndex = { context in
-            let url = images[context.index].path.flatMap { URL(fileURLWithPath: $0) }
+            let url = images[context.index].path.flatMap { MediaFileManager.urlFromPath($0) }
             let browserCell = context.cell as? JXPhotoBrowserImageCell
             guard let imageView = browserCell?.imageView else { return }
             MediaFileManager.loadImage(from: url, into: imageView)

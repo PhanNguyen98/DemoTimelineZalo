@@ -51,11 +51,14 @@ enum CreatePostEntryMode {
 
 enum OptionType: Int, CaseIterable {
     case deletePost = 0
+    case editPost
     
     var icon: UIImage? {
         switch self {
         case .deletePost:
             return UIImage(systemName: "trash")?.withTintColor(.colorACAFB2, renderingMode: .alwaysOriginal)
+        case .editPost:
+            return UIImage(systemName: "pencil.line")?.withTintColor(.colorACAFB2, renderingMode: .alwaysOriginal)
         }
     }
     
@@ -63,6 +66,8 @@ enum OptionType: Int, CaseIterable {
         switch self {
         case .deletePost:
             return "Xóa bài đăng"
+        case .editPost:
+            return "Chỉnh sửa bài đăng"
         }
     }
     
@@ -70,6 +75,8 @@ enum OptionType: Int, CaseIterable {
         switch self {
         case .deletePost:
             return "Bài đăng này sẽ ẩn khỏi nhật ký"
+        case .editPost:
+            return "Bao gồm nội dung, ảnh, video, ..."
         }
     }
 }

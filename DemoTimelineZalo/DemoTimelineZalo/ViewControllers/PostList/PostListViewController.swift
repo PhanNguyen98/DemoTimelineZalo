@@ -141,9 +141,9 @@ extension PostListViewController: CreatePostTableViewCellDelegate {
     func createPostCell(_ cell: CreatePostTableViewCell, didSelect media: PostMedia) {
         switch media {
         case .image:
-            AppRouter.presentCreatePostVC(from: self, entryMode: .imagePicker)
+            AppRouter.presentCreatePostVC(from: self, entryMode: .imagePicker, animated: false)
         case .video:
-            AppRouter.presentCreatePostVC(from: self, entryMode: .videoPicker)
+            AppRouter.presentCreatePostVC(from: self, entryMode: .videoPicker, animated: false)
         }
     }
 }
@@ -151,7 +151,7 @@ extension PostListViewController: CreatePostTableViewCellDelegate {
 // MARK: PostHeaderViewDelegate
 extension PostListViewController: PostHeaderViewDelegate {
     func postHeaderViewDidTapMore(_ headerView: PostHeaderView, post: PostModel) {
-        AppRouter.presentOptionsMenu(from: self, post: post)
+        AppRouter.presentOptionsMenu(from: self, post: post, delegate: self)
     }
 }
 
@@ -173,5 +173,12 @@ extension PostListViewController: VideoPostContentViewDelegate {
 extension PostListViewController: UserPostTableViewCellDelegate {
     func didTapContent(in cell: UserPostTableViewCell, post: PostModel) {
         AppRouter.pushtoPostDetail(from: self, post: post)
+    }
+}
+
+// MARK: OptionsViewControllerDelegate
+extension PostListViewController: OptionsViewControllerDelegate {
+    func optionsViewControllerDidSelectEdit(_ viewController: OptionsViewController, post: PostModel) {
+        AppRouter.presentEditPostVC(from: self, post: post)
     }
 }

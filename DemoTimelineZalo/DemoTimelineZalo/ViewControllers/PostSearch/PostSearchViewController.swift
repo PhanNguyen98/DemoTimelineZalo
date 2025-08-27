@@ -23,10 +23,16 @@ class PostSearchViewController: BaseViewController {
         setupUI()
         getAllPost()
         setupTableView()
+        setupNotification()
     }
     
     func getAllPost() {
         dataPosts = postRepository.fetchAllPosts()
+    }
+    
+    @objc func reloadData() {
+        getAllPost()
+        handleSearchTextChange(searchText)
     }
     
     func setupUI() {
@@ -34,6 +40,10 @@ class PostSearchViewController: BaseViewController {
         searchTextField.autocorrectionType = .no
         searchTextField.spellCheckingType = .no
         searchTextField.delegate = self
+    }
+    
+    func setupNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(self.reloadData), name: .reloadDataPost, object: nil)
     }
     
     func setupTableView() {
@@ -56,6 +66,11 @@ extension PostSearchViewController: UITextFieldDelegate {
         let currentText = textField.text ?? ""
         guard let textRange = Range(range, in: currentText) else { return true }
         let updatedText = currentText.replacingCharacters(in: textRange, with: string)
+        handleSearchTextChange(updatedText)
+        return true
+    }
+    
+    func handleSearchTextChange(_ updatedText: String) {
         searchText = updatedText
         if updatedText.isEmpty {
             dataSearch = []
@@ -63,7 +78,6 @@ extension PostSearchViewController: UITextFieldDelegate {
             dataSearch = dataPosts.filter { $0.content.lowercased().contains(updatedText.lowercased()) }
         }
         tableView.reloadData()
-        return true
     }
 }
 

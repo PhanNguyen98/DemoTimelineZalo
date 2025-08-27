@@ -63,4 +63,9 @@ class TextInputView: UIView, UITextViewDelegate {
         placeholderLabel.isHidden = !textView.text.isEmpty
         delegate?.textInputView(self, didChangeText: textView.text)
     }
+    
+    func configure(text: String) {
+        textView.text = text
+        placeholderLabel.isHidden = !text.isEmpty
+    }
 }
