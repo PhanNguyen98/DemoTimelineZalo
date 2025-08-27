@@ -1,21 +1,21 @@
 //
-//  ImagePostContentView.swift
+//  PostDetailImageContentView.swift
 //  DemoTimelineZalo
 //
-//  Created by NguyenPhan on 22/8/25.
+//  Created by NguyenPhan on 27/8/25.
 //
 
 import UIKit
 import JXPhotoBrowser
 
-protocol ImagePostContentViewDelegate: AnyObject {
-    func imagePostContentView(_ view: ImagePostContentView, didSelectImageAt index: Int, image: ImageModel, post: PostModel)
+protocol PostDetailImageContentViewDelegate: AnyObject {
+    func imagePostContentView(_ view: PostDetailImageContentView, didSelectImageAt index: Int, image: ImageModel, post: PostModel)
 }
 
-class ImagePostContentView: BasePostContentView {
+class PostDetailImageContentView: BasePostContentView {
     
     private let mediaCollectionView: UICollectionView = {
-        let layout = PostImageLayout()
+        let layout = PostDetailImageLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         
         let view = GradientView()
@@ -39,7 +39,7 @@ class ImagePostContentView: BasePostContentView {
     private var mediaCollectionHeightConstraint: NSLayoutConstraint?
     private var dataImage: [ImageModel] = []
     
-    weak var delegate: ImagePostContentViewDelegate?
+    weak var delegate: PostDetailImageContentViewDelegate?
     
     // MARK: - Setup
     override func setupUI() {
@@ -51,7 +51,7 @@ class ImagePostContentView: BasePostContentView {
         addSubview(stack)
         
         NSLayoutConstraint.activate([
-            stack.topAnchor.constraint(equalTo: contentLabel.bottomAnchor, constant: 8),
+            stack.topAnchor.constraint(equalTo: contentLabel.bottomAnchor, constant: 16),
             stack.leadingAnchor.constraint(equalTo: leadingAnchor),
             stack.trailingAnchor.constraint(equalTo: trailingAnchor),
             stack.bottomAnchor.constraint(equalTo: bottomAnchor),
@@ -67,14 +67,13 @@ class ImagePostContentView: BasePostContentView {
     // MARK: - Configure
     func configure(post: PostModel) {
         currentPost = post
-        configureContent(text: post.content)
-        mediaCollectionHeightConstraint?.constant = PostImageLayout.heightForItemCount(currentPost?.images?.count ?? 0)
+        mediaCollectionHeightConstraint?.constant = PostDetailImageLayout.heightForItemCount(currentPost?.images?.count ?? 0)
         mediaCollectionView.reloadData()
     }
 }
 
 // MARK: - UICollectionViewDelegate
-extension ImagePostContentView: UICollectionViewDelegate {
+extension PostDetailImageContentView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let images = currentPost?.images, let post = currentPost else { return }
         let selectedImage = images[indexPath.row]
@@ -103,16 +102,13 @@ extension ImagePostContentView: UICollectionViewDelegate {
 }
 
 // MARK: -UICollectionDataSource
-extension ImagePostContentView: UICollectionViewDataSource {
+extension PostDetailImageContentView: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard let images = currentPost?.images else { return 0 }
-        if images.count > 5 {
-            return 5
-        }
         return images.count
     }
     
@@ -120,7 +116,8 @@ extension ImagePostContentView: UICollectionViewDataSource {
         let cell: PostImageCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
         let row = indexPath.row
         guard let images = currentPost?.images else { return cell }
-        cell.configureImage(image: images[row], index: row, totalImages: images.count)
+        cell.configureImage(image: images[row])
         return cell
     }
 }
+

@@ -45,5 +45,27 @@ struct AppRouter {
         optionVC.post = post
         vc.presentPanModal(optionVC)
     }
+    
+    static func presentVideoViewer(from vc: UIViewController, video: VideoModel) {
+        let videoViewerVC = VideoViewerViewController.instantiate(from: .postList)
+        videoViewerVC.video = video
+        videoViewerVC.modalPresentationStyle = .overFullScreen
+        videoViewerVC.modalTransitionStyle = .crossDissolve
+        vc.present(videoViewerVC, animated: true)
+    }
+    
+    static func pushtoPostDetail(from vc: UIViewController, post: PostModel) {
+        let postDetailVC = PostDetailViewController()
+        postDetailVC.post = post
+        vc.push(postDetailVC)
+    }
+    
+    static func presentSearchViewController(from vc: UIViewController) {
+        let searchVC = PostSearchViewController.instantiate(from: .postSearch)
+        let searchNav = UINavigationController(rootViewController: searchVC)
+        searchNav.modalTransitionStyle = .crossDissolve
+        searchNav.modalPresentationStyle = .overFullScreen
+        vc.present(searchNav, animated: true)
+    }
 }
 

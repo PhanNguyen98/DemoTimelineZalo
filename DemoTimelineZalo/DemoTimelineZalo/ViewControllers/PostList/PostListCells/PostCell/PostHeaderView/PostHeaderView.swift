@@ -13,6 +13,7 @@ protocol PostHeaderViewDelegate: AnyObject {
 
 class PostHeaderView: BaseViewXIB {
     
+    @IBOutlet weak var moreButton: UIButton!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var avatarImageView: AvatarImageView!
@@ -53,6 +54,10 @@ class PostHeaderView: BaseViewXIB {
             }
             return formatter.string(from: date)
         }
+    }
+    
+    func setHiddenMoreButton(_ hidden: Bool) {
+        moreButton.isHidden = hidden
     }
     
     @IBAction func onPressMoreAction(_ sender: Any) {

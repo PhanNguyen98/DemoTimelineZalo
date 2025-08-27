@@ -25,6 +25,12 @@ class PostListViewController: BaseViewController {
         getDataPost()
         setupTableView()
         setupNotification()
+        setupUI()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        tableView.reloadData()
     }
     
     @objc func getDataPost() {
@@ -36,6 +42,10 @@ class PostListViewController: BaseViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(getDataPost), name: .reloadDataPost, object: nil)
     }
     
+    func setupUI() {
+        searchView.addTapGesture(target: self, action: #selector(self.didTapSearch))
+    }
+    
     func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
@@ -43,6 +53,10 @@ class PostListViewController: BaseViewController {
         tableView.register(UserPostTableViewCell.self)
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 300
+    }
+    
+    @objc func didTapSearch() {
+        AppRouter.presentSearchViewController(from: self)
     }
     
     @IBAction func onPressCreatePost(_ sender: Any) {
@@ -58,7 +72,7 @@ extension PostListViewController: UITableViewDelegate {
         case .createPost:
             AppRouter.presentCreatePostVC(from: self)
         case .postList:
-            break
+            AppRouter.pushtoPostDetail(from: self, post: dataPosts[indexPath.row])
         }
     }
     
@@ -116,6 +130,7 @@ extension PostListViewController: UITableViewDataSource {
             let cell: UserPostTableViewCell = tableView.dequeueReusableCell(for: indexPath)
             cell.configureHeader(post: dataPosts[row], delegate: self)
             cell.configure(post: dataPosts[row], imageDelegate: self, videoDelegate: self)
+            cell.delegate = self
             return cell
         }
     }
@@ -149,6 +164,14 @@ extension PostListViewController: ImagePostContentViewDelegate {
 // MARK: VideoPostContentViewDelegate
 extension PostListViewController: VideoPostContentViewDelegate {
     func videoPostContentViewDidTap(_ view: VideoPostContentView, video: VideoModel) {
-        
+        tableView.reloadData()
+        AppRouter.presentVideoViewer(from: self, video: video)
+    }
+}
+
+// MARK: UserPostTableViewCellDelegate
+extension PostListViewController: UserPostTableViewCellDelegate {
+    func didTapContent(in cell: UserPostTableViewCell, post: PostModel) {
+        AppRouter.pushtoPostDetail(from: self, post: post)
     }
 }

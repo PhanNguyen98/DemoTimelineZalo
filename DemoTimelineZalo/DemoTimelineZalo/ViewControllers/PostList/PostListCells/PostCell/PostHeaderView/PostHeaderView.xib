@@ -14,6 +14,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PostHeaderView" customModule="DemoTimelineZalo" customModuleProvider="target">
             <connections>
                 <outlet property="avatarImageView" destination="W29-kv-lp6" id="b5J-pb-F3d"/>
+                <outlet property="moreButton" destination="jiw-tG-sJ1" id="lDt-v4-wDp"/>
                 <outlet property="nameLabel" destination="xJ9-5Y-eP4" id="E3R-dW-IOg"/>
                 <outlet property="timeLabel" destination="tk6-Nf-fXC" id="fF4-Jg-nAO"/>
             </connections>

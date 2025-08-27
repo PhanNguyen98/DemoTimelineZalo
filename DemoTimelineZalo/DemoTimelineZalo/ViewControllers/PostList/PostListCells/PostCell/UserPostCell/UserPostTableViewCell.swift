@@ -7,7 +7,14 @@
 
 import UIKit
 
+// Delegate protocol to handle user interactions in UserPostTableViewCell
+protocol UserPostTableViewCellDelegate: AnyObject {
+    func didTapContent(in cell: UserPostTableViewCell, post: PostModel)
+}
+
 class UserPostTableViewCell: BasePostTableViewCell {
+    
+    weak var delegate: UserPostTableViewCellDelegate?
     
     private let headerView: PostHeaderView = {
         let view = PostHeaderView()
@@ -27,6 +34,8 @@ class UserPostTableViewCell: BasePostTableViewCell {
         return view
     }()
     
+    private var currentPost: PostModel?
+    
     override func setupUI() {
         super.setupUI()
         let stack = UIStackView(arrangedSubviews: [headerView, imageContentView, videoContentView])
@@ -39,7 +48,7 @@ class UserPostTableViewCell: BasePostTableViewCell {
             stack.topAnchor.constraint(equalTo: lineView.topAnchor, constant: 8),
             stack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             stack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            stack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8)
+            stack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -24)
         ])
     }
     
@@ -55,16 +64,26 @@ class UserPostTableViewCell: BasePostTableViewCell {
     func configure(post: PostModel,
                    imageDelegate: ImagePostContentViewDelegate?,
                    videoDelegate: VideoPostContentViewDelegate?) {
+        currentPost = post
         let hasVideo = post.video != nil
         videoContentView.isHidden = !hasVideo
         imageContentView.isHidden = hasVideo
         
         if let video = post.video {
+            videoContentView.didTapContentLabel = { [weak self] in
+                guard let self = self, let currentPost = self.currentPost else { return }
+                self.delegate?.didTapContent(in: self, post: currentPost)
+            }
             videoContentView.delegate = videoDelegate
             videoContentView.configure(video: video)
             videoContentView.configureContent(text: post.content)
         } else {
+            imageContentView.didTapContentLabel = { [weak self] in
+                guard let self = self, let currentPost = self.currentPost else { return }
+                self.delegate?.didTapContent(in: self, post: currentPost)
+            }
             imageContentView.delegate = imageDelegate
+            imageContentView.configureContent(text: post.content)
             imageContentView.configure(post: post)
         }
     }
@@ -73,7 +92,7 @@ class UserPostTableViewCell: BasePostTableViewCell {
         let hasVideo = post.video != nil
         
         if hasVideo {
-            videoContentView.playVideo()
+            playVideoIfExists()
         }
     }
     
@@ -81,8 +100,16 @@ class UserPostTableViewCell: BasePostTableViewCell {
         let hasVideo = post.video != nil
         
         if hasVideo {
-            videoContentView.pauseVideo()
+            pauseVideoIfExists()
         }
+    }
+    
+    func playVideoIfExists() {
+        videoContentView.playVideo()
+    }
+
+    func pauseVideoIfExists() {
+        videoContentView.pauseVideo()
     }
     
     func configureHeader(post: PostModel, delegate: PostHeaderViewDelegate) {

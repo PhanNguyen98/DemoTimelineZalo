@@ -38,6 +38,10 @@ class PostImageCollectionViewCell: UICollectionViewCell {
         numberImageLabel.text = shouldShowOverlay ? "+\(totalImages - 5)" : nil
     }
     
+    func configureImage(image: ImageModel) {
+        MediaFileManager.loadImage(from: URL(fileURLWithPath: image.path ?? ""), into: postImageView)
+    }
+    
     @IBAction func onPressDelete(_ sender: Any) {
         onDeleteTapped()
     }

@@ -55,10 +55,10 @@ class VideoPostContentView: BasePostContentView {
         addSubview(videoContainerView)
         addSubview(muteButton)
         
-        addTapGesture(target: self, action: #selector(handleTap))
+        videoContainerView.addTapGesture(target: self, action: #selector(handleTap))
         
         NSLayoutConstraint.activate([
-            videoContainerView.topAnchor.constraint(equalTo: contentLabel.bottomAnchor, constant: 8),
+            videoContainerView.topAnchor.constraint(equalTo: contentLabel.bottomAnchor, constant: 16),
             videoContainerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             videoContainerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             videoContainerView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16),
@@ -72,6 +72,7 @@ class VideoPostContentView: BasePostContentView {
     }
     
     func configure(video: VideoModel) {
+        self.pauseVideo()
         currentVideo = video
         Task {
             videoContainerView.isHidden = false
@@ -92,6 +93,7 @@ class VideoPostContentView: BasePostContentView {
     }
     
     @objc private func handleTap() {
+        isMuted = true
         guard let video = currentVideo else { return }
         delegate?.videoPostContentViewDidTap(self, video: video)
     }
@@ -106,7 +108,12 @@ class VideoPostContentView: BasePostContentView {
     }
 
     func pauseVideo() {
+        isMuted = true
         player?.pause()
+    }
+
+    func muteVideo(_ mute: Bool) {
+        isMuted = mute
     }
     
     @objc private func playerDidFinishPlaying() {
