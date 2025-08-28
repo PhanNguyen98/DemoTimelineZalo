@@ -34,8 +34,8 @@ class UserPostTableViewCell: BasePostTableViewCell {
         return view
     }()
     
-    private let reactionContentView: ReactionContentView = {
-        let view = ReactionContentView()
+    private let reactionContentView: PostFooterView = {
+        let view = PostFooterView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()

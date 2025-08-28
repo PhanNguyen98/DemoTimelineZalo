@@ -15,6 +15,7 @@ struct PostModel {
     var author: UserProfileModel
     var images: [ImageModel]?
     var video: VideoModel?
+    var reactions: [ReactionModel]?
 }
 
 extension PostModel {
@@ -30,6 +31,10 @@ extension PostModel {
         }
         
         entity.video = self.video?.toEntity(context: context)
+        
+        if let reactions = self.reactions?.map({ $0.toEntity(context: context) }) {
+            entity.images = NSSet(array: reactions)
+        }
         return entity
     }
     
@@ -43,7 +48,8 @@ extension Post {
             createdAt: self.createdAt ?? Date(),
             author: self.author?.toModel() ?? UserProfileModel(id: UUID(), name: ""),
             images: (self.images as? Set<Image>)?.map { $0.toModel() },
-            video: self.video?.toModel()
+            video: self.video?.toModel(),
+            reactions: (self.reactions as? Set<Reaction>)?.map { $0.toModel() }
         )
     }
 }
