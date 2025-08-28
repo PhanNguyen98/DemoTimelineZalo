@@ -49,6 +49,8 @@
 		3161F7952E5DB87400850923 /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3161F7942E5DB87400850923 /* OptionsViewController.swift */; };
 		3161F7992E5DB9AD00850923 /* OptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3161F7972E5DB9AD00850923 /* OptionTableViewCell.swift */; };
 		3161F79A2E5DB9AD00850923 /* OptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3161F7982E5DB9AD00850923 /* OptionTableViewCell.xib */; };
+		317A19402E600434000BD4AF /* ReactionContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317A193F2E600434000BD4AF /* ReactionContentView.swift */; };
+		317A19422E60043D000BD4AF /* ReactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317A19412E60043D000BD4AF /* ReactionView.swift */; };
 		318545132E5B4C1700373618 /* VideoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318545122E5B4C1700373618 /* VideoDetailViewController.swift */; };
 		31887E762E5AEA9E0084BCC0 /* SelectedImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31887E752E5AEA9E0084BCC0 /* SelectedImagesViewController.swift */; };
 		31887E7D2E5AF0400084BCC0 /* AddImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31887E7C2E5AF0400084BCC0 /* AddImageCollectionViewCell.xib */; };
@@ -136,6 +138,8 @@
 		3161F7942E5DB87400850923 /* OptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
 		3161F7972E5DB9AD00850923 /* OptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionTableViewCell.swift; sourceTree = "<group>"; };
 		3161F7982E5DB9AD00850923 /* OptionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OptionTableViewCell.xib; sourceTree = "<group>"; };
+		317A193F2E600434000BD4AF /* ReactionContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactionContentView.swift; sourceTree = "<group>"; };
+		317A19412E60043D000BD4AF /* ReactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactionView.swift; sourceTree = "<group>"; };
 		318545122E5B4C1700373618 /* VideoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoDetailViewController.swift; sourceTree = "<group>"; };
 		31887E752E5AEA9E0084BCC0 /* SelectedImagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedImagesViewController.swift; sourceTree = "<group>"; };
 		31887E7B2E5AF0400084BCC0 /* AddImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddImageCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -448,6 +452,15 @@
 			path = CreatePostView;
 			sourceTree = "<group>";
 		};
+		317A193E2E600419000BD4AF /* ReactionContentView */ = {
+			isa = PBXGroup;
+			children = (
+				317A193F2E600434000BD4AF /* ReactionContentView.swift */,
+				317A19412E60043D000BD4AF /* ReactionView.swift */,
+			);
+			path = ReactionContentView;
+			sourceTree = "<group>";
+		};
 		318545112E5B4BF700373618 /* VideoDetailVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -512,6 +525,7 @@
 		319FAF822E571B06006012FE /* PostContentView */ = {
 			isa = PBXGroup;
 			children = (
+				317A193E2E600419000BD4AF /* ReactionContentView */,
 				319F23872E580DBA004C691E /* PostImageCell */,
 				31BB25992E58A35D009BD971 /* VideoPostContentView */,
 				31BB25982E58A344009BD971 /* ImagePostContentView */,
@@ -854,6 +868,7 @@
 				319F238B2E580DE8004C691E /* PostImageCollectionViewCell.swift in Sources */,
 				31F132592E5C3D8100F1F69E /* MediaFileManager.swift in Sources */,
 				312B4B102E56C31200B4BEA3 /* AlertHelper.swift in Sources */,
+				317A19402E600434000BD4AF /* ReactionContentView.swift in Sources */,
 				312B4B1D2E56C62300B4BEA3 /* CreatePostViewController.swift in Sources */,
 				312B4B002E56C1D800B4BEA3 /* LoadingView.swift in Sources */,
 				310EECBC2E5ED5B7005ECEE9 /* CustomNavigationView.swift in Sources */,
@@ -890,6 +905,7 @@
 				312B4B322E56C95000B4BEA3 /* UIColor+Extensions.swift in Sources */,
 				31EBABAD2E59A23100FA2DC5 /* SelectedVideoView.swift in Sources */,
 				312B4B2E2E56C7D000B4BEA3 /* SplashViewController.swift in Sources */,
+				317A19422E60043D000BD4AF /* ReactionView.swift in Sources */,
 				3144990F2E5700620037CCAA /* CoreDataManager.swift in Sources */,
 				31BB25972E58A33E009BD971 /* ImagePostContentView.swift in Sources */,
 				312B4B3C2E56CD5200B4BEA3 /* Constants.swift in Sources */,

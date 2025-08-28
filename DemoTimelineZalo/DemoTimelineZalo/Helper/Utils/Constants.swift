@@ -14,6 +14,50 @@ enum StoryboardName: String {
     case postSearch = "PostSearch"
 }
 
+enum ReactionType: Int, CaseIterable {
+    case like = 0
+    case love
+    case haha
+    case wow
+    case sad
+    case angry
+    
+    var title: String {
+        switch self {
+        case .like: return "Thích"
+        case .love: return "Yêu"
+        case .haha: return "Haha"
+        case .wow: return "Wow"
+        case .sad: return "Huhu"
+        case .angry: return "Giận"
+        }
+    }
+    
+    var icon: UIImage? {
+        switch self {
+        case .like: return .heartSelected
+        case .love: return .emoji
+        case .haha: return .laughing
+        case .wow: return .surprised
+        case .sad: return .crying
+        case .angry: return .angry
+        }
+    }
+    
+    var color: UIColor {
+        switch self {
+        case .like, .angry:
+            return .color7B4140
+        case .haha, .wow, .sad, .love:
+            return .colorD3AF34
+        }
+    }
+    
+    var iconDefault: UIImage? {
+        return .heart
+    }
+}
+
 enum PostMedia: Int, CaseIterable {
     case image = 0
     case video

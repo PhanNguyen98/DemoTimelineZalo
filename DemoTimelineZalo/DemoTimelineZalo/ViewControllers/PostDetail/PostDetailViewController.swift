@@ -34,6 +34,12 @@ class PostDetailViewController: BaseViewController {
         return view
     }()
     
+    private let reactionContentView: ReactionContentView = {
+        let view = ReactionContentView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     var post: PostModel?
     
     // MARK: - Lifecycle
@@ -70,7 +76,7 @@ class PostDetailViewController: BaseViewController {
         ])
         
         // Setup stackView
-        let stackView = UIStackView(arrangedSubviews: [headerView, imageContentView, videoContentView])
+        let stackView = UIStackView(arrangedSubviews: [headerView, imageContentView, videoContentView, reactionContentView])
         stackView.axis = .vertical
         stackView.spacing = 16
         stackView.translatesAutoresizingMaskIntoConstraints = false

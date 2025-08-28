@@ -18,6 +18,7 @@ class PostSearchViewController: BaseViewController {
     
     let postRepository = PostRepository()
     
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -26,6 +27,7 @@ class PostSearchViewController: BaseViewController {
         setupNotification()
     }
     
+    // MARK: - Data Handling
     func getAllPost() {
         dataPosts = postRepository.fetchAllPosts()
     }
@@ -35,6 +37,7 @@ class PostSearchViewController: BaseViewController {
         handleSearchTextChange(searchText)
     }
     
+    // MARK: - Setup UI
     func setupUI() {
         searchTextField.becomeFirstResponder()
         searchTextField.autocorrectionType = .no
@@ -42,10 +45,12 @@ class PostSearchViewController: BaseViewController {
         searchTextField.delegate = self
     }
     
+    // MARK: - Notification
     func setupNotification() {
         NotificationCenter.default.addObserver(self, selector: #selector(self.reloadData), name: .reloadDataPost, object: nil)
     }
     
+    // MARK: - TableView Setup
     func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
@@ -54,6 +59,7 @@ class PostSearchViewController: BaseViewController {
         tableView.estimatedRowHeight = 100
     }
     
+    // MARK: - Actions
     @IBAction func onPressBack(_ sender: Any) {
         dismiss(animated: true)
     }

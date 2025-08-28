@@ -34,11 +34,17 @@ class UserPostTableViewCell: BasePostTableViewCell {
         return view
     }()
     
+    private let reactionContentView: ReactionContentView = {
+        let view = ReactionContentView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     private var currentPost: PostModel?
     
     override func setupUI() {
         super.setupUI()
-        let stack = UIStackView(arrangedSubviews: [headerView, imageContentView, videoContentView])
+        let stack = UIStackView(arrangedSubviews: [headerView, imageContentView, videoContentView, reactionContentView])
         stack.axis = .vertical
         stack.spacing = 8
         contentView.addSubview(stack)
@@ -48,7 +54,7 @@ class UserPostTableViewCell: BasePostTableViewCell {
             stack.topAnchor.constraint(equalTo: lineView.topAnchor, constant: 8),
             stack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             stack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            stack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -24)
+            stack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8)
         ])
     }
     
